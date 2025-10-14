@@ -1,0 +1,2 @@
+# client
+Mercurio launcher client

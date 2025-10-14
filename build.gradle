@@ -15,11 +15,14 @@ def os = org.gradle.internal.os.OperatingSystem.current()
 def osDetector = os.isWindows() ? 'win' : (os.isMacOsX() ? 'mac-aarch64' : 'linux')
 
 dependencies {
+    //JAvaFX
     implementation "org.openjfx:javafx-controls:25:${osDetector}"
     implementation "org.openjfx:javafx-fxml:25:${osDetector}"
 
+    //BoostrapFX
     implementation 'org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0'
 
+    //Utilities tests
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'\

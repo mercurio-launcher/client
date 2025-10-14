@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1200" prefHeight="740"
+            styleClass="launcher-root">
+
+    <!-- =================== HEADER =================== -->
+    <top>
+        <VBox spacing="0">
+            <!-- Header -->
+            <ToolBar styleClass="header-bar" prefHeight="64">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ImageView fitHeight="32" fitWidth="32" preserveRatio="true">
+                        <image><Image url="@/img/mercurio-logo.png"/></image>
+                    </ImageView>
+                    <Label text="BlockCraft Launcher" styleClass="app-title"/>
+                </HBox>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <MenuButton fx:id="profileMenu" text="Steve" styleClass="profile-menu">
+                    <items>
+                        <MenuItem text="Switch Account…" fx:id="miSwitchAccount"/>
+                        <MenuItem text="Manage Accounts…" fx:id="miManageAccounts"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Log out" fx:id="miLogout"/>
+                    </items>
+                    <graphic><Circle radius="12" styleClass="avatar-circle"/></graphic>
+                </MenuButton>
+                <Button fx:id="btnSettings" text="Settings" styleClass="btn-settings">
+                    <graphic>
+                        <ImageView fitHeight="18" fitWidth="18" preserveRatio="true">
+                            <image><Image url="@/img/mercurio-logo.png"/></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </ToolBar>
+
+            <!-- Tabs -->
+            <ToolBar styleClass="tabs-bar">
+                <fx:define>
+                    <ToggleGroup fx:id="tabsGroup"/>
+                </fx:define>
+
+                <ToggleButton fx:id="tabPlay" text="Play" selected="true"
+                              toggleGroup="$tabsGroup" styleClass="tab-toggle"/>
+                <ToggleButton fx:id="tabMods" text="Mods"
+                              toggleGroup="$tabsGroup" styleClass="tab-toggle"/>
+                <ToggleButton fx:id="tabServers" text="Servers"
+                              toggleGroup="$tabsGroup" styleClass="tab-toggle"/>
+                <ToggleButton fx:id="tabSnapshots" text="Snapshots"
+                              toggleGroup="$tabsGroup" styleClass="tab-toggle"/>
+                <ToggleButton fx:id="tabNews" text="News"
+                              toggleGroup="$tabsGroup" styleClass="tab-toggle"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnRedeem" text="Redeem Code" styleClass="btn-light"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- =================== SIDE MENU =================== -->
+    <left>
+        <VBox spacing="10" prefWidth="250" styleClass="side-menu">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+            <!-- Search -->
+            <HBox spacing="6">
+                <TextField fx:id="txtSearch" promptText="Search..." HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnClearSearch" text="✕" minWidth="36"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Versions -->
+            <Label text="Versions" styleClass="side-section-title"/>
+            <VBox spacing="5">
+                <padding><Insets bottom="10"/></padding>
+                <CheckBox fx:id="chkRelease" text="Release" selected="true"/>
+                <CheckBox fx:id="chkSnapshot" text="Snapshot"/>
+                <CheckBox fx:id="chkOldBeta" text="Old Beta/Alpha"/>
+                <ListView fx:id="lvVersions" prefHeight="140"/>
+            </VBox>
+
+            <!-- Mods -->
+            <Label text="Mods" styleClass="side-section-title"/>
+            <VBox spacing="5">
+                <padding><Insets bottom="10"/></padding>
+                <CheckBox fx:id="chkFabric" text="Fabric"/>
+                <CheckBox fx:id="chkForge" text="Forge"/>
+                <ListView fx:id="lvMods" prefHeight="140"/>
+            </VBox>
+
+            <!-- Servers -->
+            <Label text="Servers" styleClass="side-section-title"/>
+            <VBox spacing="5">
+                <padding><Insets bottom="10"/></padding>
+                <Button fx:id="btnAddServer" text="Add Server…" maxWidth="Infinity"/>
+                <ListView fx:id="lvServers" prefHeight="140"/>
+            </VBox>
+
+            <!-- Quick Settings -->
+            <Label text="Quick Settings" styleClass="side-section-title"/>
+            <VBox spacing="6">
+                <Button fx:id="btnJavaSettings" text="Java &amp; Memory…" maxWidth="Infinity"/>
+                <Button fx:id="btnResolution" text="Resolution…" maxWidth="Infinity"/>
+                <Button fx:id="btnGameDir" text="Game Directory…" maxWidth="Infinity"/>
+                <Button fx:id="btnAccounts" text="Accounts…" maxWidth="Infinity"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- =================== MAIN CONTENT =================== -->
+    <center>
+        <StackPane fx:id="contentStack" styleClass="content-stack">
+            <!-- PLAY VIEW -->
+            <VBox fx:id="viewPlay" spacing="16" visible="true" managed="true">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="Selected Version" styleClass="section-title"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Version:"/>
+                    <ChoiceBox fx:id="cbVersion" prefWidth="240"/>
+                    <Label text="Profile:"/>
+                    <ChoiceBox fx:id="cbProfile" prefWidth="200"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnManageProfiles" text="Manage Profiles…"/>
+                </HBox>
+                <Separator/>
+                <Label text="Release Notes" styleClass="section-title"/>
+                <ScrollPane fitToWidth="true" prefHeight="280">
+                    <content>
+                        <VBox spacing="8">
+                            <Label fx:id="lblReleaseTitle" text="1.21.1 — Release" styleClass="h4"/>
+                            <Label fx:id="lblReleaseBody" wrapText="true" text="Changelog placeholder..."/>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </VBox>
+
+            <!-- MODS VIEW -->
+            <VBox fx:id="viewMods" spacing="12" visible="false" managed="false">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Mod Loader:"/>
+                    <ChoiceBox fx:id="cbModLoader" prefWidth="160"/>
+                    <Label text="Game Version:"/>
+                    <ChoiceBox fx:id="cbModGameVersion" prefWidth="160"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnOpenModsFolder" text="Open Mods Folder"/>
+                </HBox>
+                <TableView fx:id="tvMods" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Name" prefWidth="280"/>
+                        <TableColumn text="Version" prefWidth="120"/>
+                        <TableColumn text="Enabled" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- SERVERS VIEW -->
+            <VBox fx:id="viewServers" spacing="12" visible="false" managed="false">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Server Filters:"/>
+                    <ChoiceBox fx:id="cbServerFilter" prefWidth="180"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnImportServers" text="Import from file…"/>
+                    <Button fx:id="btnExportServers" text="Export list…"/>
+                </HBox>
+                <TableView fx:id="tvServers" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Name" prefWidth="240"/>
+                        <TableColumn text="Address" prefWidth="220"/>
+                        <TableColumn text="Status" prefWidth="140"/>
+                        <TableColumn text="Players" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- SNAPSHOTS VIEW -->
+            <VBox fx:id="viewSnapshots" spacing="12" visible="false" managed="false">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="Experimental Snapshots" styleClass="section-title"/>
+                <Label wrapText="true"
+                       text="Snapshots may be unstable and could break worlds. Back up your saves before playing."/>
+                <TableView fx:id="tvSnapshots" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Snapshot" prefWidth="220"/>
+                        <TableColumn text="Date" prefWidth="160"/>
+                        <TableColumn text="Notes" prefWidth="340"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- NEWS VIEW -->
+            <VBox fx:id="viewNews" spacing="12" visible="false" managed="false">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="Latest News" styleClass="section-title"/>
+                <ListView fx:id="lvNews" VBox.vgrow="ALWAYS"/>
+                <HBox spacing="8" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnRefreshNews" text="Refresh"/>
+                    <Button fx:id="btnOpenNewsInBrowser" text="Open in Browser"/>
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+
+    <!-- =================== STATUS BAR =================== -->
+    <bottom>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="status-bar">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+            <Label fx:id="lblStatus" text="Ready"/>
+            <ProgressBar fx:id="progress" prefWidth="400" progress="0.0"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <HBox spacing="8" alignment="CENTER_RIGHT">
+                <Label text="Resolution:"/>
+                <ChoiceBox fx:id="cbResolution" prefWidth="160"/>
+                <Label text="Memory:"/>
+                <ChoiceBox fx:id="cbMemory" prefWidth="120"/>
+            </HBox>
+            <Button fx:id="btnPrimaryAction" text="Play" defaultButton="true"
+                    minWidth="140" minHeight="38" styleClass="btn-primary"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

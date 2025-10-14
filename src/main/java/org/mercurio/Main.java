@@ -1,7 +1,9 @@
 package org.mercurio;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -9,29 +11,28 @@ import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
+import java.util.Objects;
+
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) {
-        Panel panel = new Panel("This is the title");
-        panel.getStyleClass().add("panel-primary");                            //(2)
-        BorderPane content = new BorderPane();
-        content.setPadding(new Insets(20));
-        Button button = new Button("Hello BootstrapFX");
-        button.getStyleClass().setAll("btn","btn-danger");                     //(2)
-        content.setCenter(button);
-        panel.setBody(content);
+    public void start(Stage stage) throws Exception {
+        var loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        var root = loader.load();
+        var scene = new Scene((Parent)root, 1000, 700);
 
-        Scene scene = new Scene(panel);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());       //(3)
+        //Link to styles
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
-        primaryStage.setTitle("BootstrapFX");
-        primaryStage.setScene(scene);
-        primaryStage.sizeToScene();
-        primaryStage.show();
+        // Tu tema propio
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
+
+        stage.setTitle("Mi Aplicación");
+        stage.setScene(scene);
+        stage.show();
     }
 
     static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
+            <children>
+                <Label text="Ayuda" styleClass="section-h1"/>
+                <Label text="Documentación y soporte (placeholder)." wrapText="true"/>
+                <TitledPane text="FAQs" expanded="true">
+                    <content>
+                        <VBox spacing="8" styleClass="card">
+                            <children>
+                                <Label text="• ¿Cómo navego entre secciones? Usa el menú lateral." wrapText="true"/>
+                                <Label text="• ¿Dónde cambio el tema? En Ajustes." wrapText="true"/>
+                                <Label text="• ¿Cómo reporto un error? Enviar logs al soporte." wrapText="true"/>
+                            </children>
+                            <padding>
+                                <Insets top="12" right="12" bottom="12" left="12"/>
+                            </padding>
+                        </VBox>
+                    </content>
+                </TitledPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

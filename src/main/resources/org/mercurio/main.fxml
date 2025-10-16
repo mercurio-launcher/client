@@ -28,11 +28,20 @@
 
                 <!-- Navegación con ToggleButtons -->
                 <ToggleButton fx:id="btnHome" prefHeight="34.0" prefWidth="216.0" selected="true" styleClass="nav-btn" text="Home" />
-                <!-- NUEVO BOTÓN -->
                 <ToggleButton fx:id="btnReports" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Informes" />
+                <!-- NUEVOS BOTONES -->
+                <ToggleButton fx:id="btnAnalytics" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Analytics" />
+                <ToggleButton fx:id="btnTasks" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Tareas" />
+                <ToggleButton fx:id="btnHelp" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Ayuda" />
+
                 <Pane VBox.vgrow="ALWAYS" />
                 <Separator />
-                <ToggleButton fx:id="btnSettings" prefHeight="34.0" prefWidth="228.0" styleClass="nav-btn" text="Ajustes" />
+            <HBox prefHeight="34.0" prefWidth="216.0">
+               <children>
+                      <ToggleButton fx:id="btnProfile" prefHeight="34.0" prefWidth="110.0" styleClass="nav-btn" text="Perfil" />
+                      <ToggleButton fx:id="btnSettings" prefHeight="34.0" prefWidth="110.0" styleClass="nav-btn" text="Ajustes" />
+               </children>
+            </HBox>
 
                 <Button prefHeight="34.0" prefWidth="216.0" styleClass="sidebar-exit" text="Salir" />
             </children>

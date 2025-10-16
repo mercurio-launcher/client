@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
+            <children>
+                <Label text="Analytics" styleClass="section-h1"/>
+                <Label text="Panel de métricas y gráficos (placeholder)." wrapText="true"/>
+                <VBox styleClass="card" spacing="8">
+                    <children>
+                        <Label text="Resumen" styleClass="card-title"/>
+                        <Label text="KPI1: —  KPI2: —  KPI3: —" wrapText="true"/>
+                        <Button text="Actualizar"/>
+                    </children>
+                    <padding>
+                        <Insets top="12" right="12" bottom="12" left="12"/>
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

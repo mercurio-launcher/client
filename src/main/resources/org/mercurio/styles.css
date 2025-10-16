@@ -1,19 +1,24 @@
 /* ====== Paleta y base ====== */
 :root {
-    -app-bg: #0f172a;
-    -sidebar-bg: #111827;
-    -content-bg: #0b1220;
-    -header-bg: #0b1220;
-    -text: #e5e7eb;
-    -muted: #9ca3af;
-    -primary: #3b82f6;
-    -primary-ghost: rgba(59,130,246,0.15);
-    -divider: rgba(255,255,255,0.08);
-    -btn-bg: rgba(255,255,255,0.06);
+
+    -app-bg: #16171B;
+    -sidebar-bg: #1B1D22;
+    -content-bg: #20232A;
+    -header-bg: #20232A;
+    -text: #F2F3F5;
+    -text-n-white: #0E0E0E;
+    -muted: #9AA0A6;
+    -primary: #7C3AED;
+    -primary-ghost: rgba(124,58,237,0.20);
+    -divider: rgba(255,255,255,0.06);
+    -btn-bg: rgba(255,255,255,0.05);
     -btn-bg-hover: rgba(255,255,255,0.12);
-    -selected: rgba(59,130,246,0.18);
-    -selected-border: #3b82f6;
-    -danger: #ef4444;
+    -selected: rgba(124,58,237,0.22);
+    -selected-border: #A78BFA;
+    -danger: #EF4444;
+
+
+
 }
 
 .root {
@@ -63,9 +68,9 @@
     -fx-padding: 10 12 10 12;
     -fx-background-radius: 8;
 }
-.sidebar-exit:hover { -fx-background-color: rgba(239,68,68,0.15); }
+.sidebar-exit:hover { -fx-background-color: -danger; }
 
-/* ====== Contenido ====== */
+/* Contenido */
 .content-root { -fx-background-color: -content-bg; }
 
 .section-h1 {
@@ -74,7 +79,7 @@
     -fx-text-fill: -text;
 }
 
-/* Cards sencillas para Home */
+/* Cards para Home */
 .card {
     -fx-background-color: -btn-bg;
     -fx-background-radius: 12;
@@ -91,3 +96,28 @@
 .label { -fx-text-fill: -text; }
 .button { -fx-text-fill: -text; }
 .separator *.line { -fx-background-color: -divider; }
+
+/* barra superior */
+.window-bar {
+    -fx-background-color: -header-bg;
+    -fx-border-color: -divider;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 8;
+}
+.window-title {
+    -fx-text-fill: -text;
+    -fx-font-weight: bold;
+}
+
+/* Botones ventana */
+.win-btn {
+    -fx-background-color: -btn-bg;
+    -fx-text-fill: -text;
+    -fx-background-radius: 8;
+    -fx-padding: 2 10 2 10;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+.win-btn:hover { -fx-background-color: -btn-bg-hover; }
+#btnClose:hover { -fx-background-color: -danger; }

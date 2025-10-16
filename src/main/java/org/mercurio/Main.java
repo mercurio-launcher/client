@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class Main extends Application {
         scene.getStylesheets().add(
                 Objects.requireNonNull(getClass().getResource("/org/mercurio/styles.css")).toExternalForm()
         );
-
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Mercurio — Dashboard");
         stage.setScene(scene);
         stage.show();

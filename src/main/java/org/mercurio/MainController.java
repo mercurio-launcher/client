@@ -1,12 +1,16 @@
 package org.mercurio;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,11 +28,18 @@ public class MainController {
     @FXML private ToggleButton btnAnalytics;
     @FXML private ToggleButton btnTasks;
     @FXML private ToggleButton btnHelp;
-
+    @FXML private HBox windowBar;
+    @FXML private Button btnMinimize;
+    @FXML private Button btnMaximize;
+    @FXML private Button btnClose;
 
 
     private final ToggleGroup navGroup = new ToggleGroup();
     private final Map<String, Parent> cache = new HashMap<>();
+
+    //offsets para arrastrar la ventana
+    private double dragOffsetX = 0;
+    private double dragOffsetY = 0;
 
     @FXML
     private void initialize() {
@@ -41,8 +52,7 @@ public class MainController {
         btnTasks.setToggleGroup(navGroup);
         btnHelp.setToggleGroup(navGroup);
 
-        // --- NUEVO ---
-        // Añadir o quitar la clase "active" para estilo visual (sin usar :selected)
+
         navGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
             if (oldToggle instanceof ToggleButton) {
                 ((ToggleButton) oldToggle).getStyleClass().remove("active");
@@ -51,7 +61,6 @@ public class MainController {
                 ((ToggleButton) newToggle).getStyleClass().add("active");
             }
         });
-        // --- FIN NUEVO ---
 
         // Eventos de navegación
         btnHome.setOnAction(e -> navigateTo("Home", "/org/mercurio/views/HomeView.fxml"));
@@ -66,6 +75,8 @@ public class MainController {
         btnHome.setSelected(true);
         btnHome.getStyleClass().add("active"); // <-- Marca Home como activo al iniciar
         navigateTo("Home", "/org/mercurio/views/HomeView.fxml");
+
+        Platform.runLater(this::setupWindowControls);
     }
 
     private void navigateTo(String title, String fxmlPath) {
@@ -78,5 +89,39 @@ public class MainController {
         });
 
         contentStack.getChildren().setAll(view);
+    }
+
+    // Lógica de ventana sin bordes (mover/min/max/cerrar)
+    private void setupWindowControls() {
+        // Si no has añadido la barra/btns en el FXML, sal sin romper
+        if (windowBar == null || contentStack == null) return;
+
+        Scene scene = contentStack.getScene();
+        if (scene == null) return;
+
+        Stage stage = (Stage) scene.getWindow();
+        if (stage == null) return;
+
+        // Arrastrar ventana desde la barra
+        windowBar.setOnMousePressed(ev -> {
+            dragOffsetX = ev.getSceneX();
+            dragOffsetY = ev.getSceneY();
+        });
+        windowBar.setOnMouseDragged(ev -> {
+            stage.setX(ev.getScreenX() - dragOffsetX);
+            stage.setY(ev.getScreenY() - dragOffsetY);
+        });
+
+        // Doble click para maximizar/restaurar
+        windowBar.setOnMouseClicked(ev -> {
+            if (ev.getClickCount() == 2) {
+                stage.setMaximized(!stage.isMaximized());
+            }
+        });
+
+        // Botones (si existen en el FXML)
+        if (btnMinimize != null) btnMinimize.setOnAction(e -> stage.setIconified(true));
+        if (btnMaximize != null) btnMaximize.setOnAction(e -> stage.setMaximized(!stage.isMaximized()));
+        if (btnClose != null)    btnClose.setOnAction(e -> stage.close());
     }
 }

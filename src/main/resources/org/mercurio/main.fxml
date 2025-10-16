@@ -1,69 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.mercurio.MainController"
-            prefWidth="1200" prefHeight="800">
+<BorderPane prefHeight="800" prefWidth="1200" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mercurio.MainController">
 
-    <!-- HEADER SUPERIOR -->
-    <top>
-        <HBox styleClass="app-header">
-            <children>
-                <Label fx:id="lblSectionTitle" text="Home" styleClass="header-title"/>
-                <Pane HBox.hgrow="ALWAYS"/>
-                <HBox spacing="12">
-                    <children>
-                        <Button text="Perfil" styleClass="header-btn"/>
-                        <Button text="Configuración" styleClass="header-btn"/>
-                    </children>
-                </HBox>
-            </children>
-            <padding>
-                <Insets top="12" right="16" bottom="12" left="16"/>
-            </padding>
-        </HBox>
-    </top>
+
 
     <!-- MENÚ LATERAL IZQUIERDO -->
     <left>
-        <VBox fx:id="sidebar" styleClass="sidebar" prefWidth="240" spacing="8">
+        <VBox fx:id="sidebar" prefWidth="240" spacing="8" styleClass="sidebar">
             <children>
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <HBox alignment="CENTER_LEFT" spacing="10">
                     <children>
-                        <ImageView fitHeight="28" fitWidth="28" preserveRatio="true">
+                        <ImageView fitHeight="69.0" fitWidth="63.0" preserveRatio="true">
                             <image>
-                                <Image url="@/img/mercurio-logo.png"/>
+                                <Image url="@/img/mercurio-logo.png" />
                             </image>
                         </ImageView>
-                        <Label text="Mercurio" styleClass="sidebar-title"/>
+                        <Label styleClass="sidebar-title" text="Mercurio" />
                     </children>
                 </HBox>
 
-                <Separator/>
+                <Separator />
 
                 <!-- Navegación con ToggleButtons -->
-                <ToggleButton fx:id="btnHome" text="Home" styleClass="nav-btn" selected="true"/>
-                <ToggleButton fx:id="btnSettings" text="Ajustes" styleClass="nav-btn"/>
+                <ToggleButton fx:id="btnHome" prefHeight="34.0" prefWidth="216.0" selected="true" styleClass="nav-btn" text="Home" />
+                <!-- NUEVO BOTÓN -->
+                <ToggleButton fx:id="btnReports" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Informes" />
+                <Pane VBox.vgrow="ALWAYS" />
+                <Separator />
+                <ToggleButton fx:id="btnSettings" prefHeight="34.0" prefWidth="228.0" styleClass="nav-btn" text="Ajustes" />
 
-                <Pane VBox.vgrow="ALWAYS"/>
-                <Separator/>
-
-                <Button text="Salir" styleClass="sidebar-exit"/>
+                <Button prefHeight="34.0" prefWidth="216.0" styleClass="sidebar-exit" text="Salir" />
             </children>
             <padding>
-                <Insets top="12" right="12" bottom="12" left="12"/>
+                <Insets bottom="12" left="12" right="12" top="12" />
             </padding>
         </VBox>
     </left>
 
     <!-- CONTENEDOR CENTRAL (carga dinámica) -->
     <center>
-        <StackPane fx:id="contentStack" styleClass="content-root"/>
+        <StackPane fx:id="contentStack" styleClass="content-root" />
     </center>
 
 </BorderPane>

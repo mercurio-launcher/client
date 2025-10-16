@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
+            <children>
+                <Label text="Inicio" styleClass="section-h1"/>
+                <Label wrapText="true" text="Coloca tarjetas, tablas o gráficos aquí."/>
+                <HBox spacing="16">
+                    <children>
+                        <!-- Card simple (sin TitledPane para evitar warnings) -->
+                        <VBox styleClass="card" spacing="8">
+                            <children>
+                                <Label text="Resumen" styleClass="card-title"/>
+                                <Label text="KPIs y widgets." wrapText="true"/>
+                            </children>
+                            <padding>
+                                <Insets top="12" right="12" bottom="12" left="12"/>
+                            </padding>
+                        </VBox>
+
+                        <VBox styleClass="card" spacing="8">
+                            <children>
+                                <Label text="Actividad" styleClass="card-title"/>
+                                <Label text="Últimos eventos." wrapText="true"/>
+                            </children>
+                            <padding>
+                                <Insets top="12" right="12" bottom="12" left="12"/>
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

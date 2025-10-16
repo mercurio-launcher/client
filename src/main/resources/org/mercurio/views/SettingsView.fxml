@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import java.lang.String?>
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
+            <children>
+                <Label text="Ajustes" styleClass="section-h1"/>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Tema:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ChoiceBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Claro"/>
+                                    <String fx:value="Oscuro"/>
+                                    <String fx:value="Sistema"/>
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+
+                        <Label text="Notificaciones:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <CheckBox text="Habilitadas" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Button text="Guardar cambios" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -15,12 +15,21 @@ body:json {
     "Properties": {
       "AuthMethod": "RPS",
       "SiteName": "user.auth.xboxlive.com",
-      "RpsTicket": "d=<TOKEN>"
+      "RpsTicket": "d={{XBOX_TOKEN}}"
     },
     "RelyingParty": "http://auth.xboxlive.com",
     "TokenType": "JWT"
   }
   
+}
+
+vars:pre-request {
+  XBOX_TOKEN: 
+}
+
+script:pre-request {
+  var x_token = bru.getGlobalEnvVar("xbox_token")
+  bru.setVar("xbox_token",  x_token)
 }
 
 settings {

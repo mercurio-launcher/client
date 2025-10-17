@@ -1,0 +1,29 @@
+meta {
+  name: Mercurio request xbox live
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://user.auth.xboxlive.com/user/authenticate
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "Properties": {
+      "AuthMethod": "RPS",
+      "SiteName": "user.auth.xboxlive.com",
+      "RpsTicket": "d=<TOKEN>"
+    },
+    "RelyingParty": "http://auth.xboxlive.com",
+    "TokenType": "JWT"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

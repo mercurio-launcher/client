@@ -1,0 +1,22 @@
+meta {
+  name: Mercurio auth minecraft
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://api.minecraftservices.com/authentication/login_with_xbox
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "identityToken": "XBL3.0 x=<uhs>;<XSTSToken>"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

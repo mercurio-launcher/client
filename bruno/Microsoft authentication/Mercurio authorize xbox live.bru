@@ -13,12 +13,16 @@ post {
 body:json {
   {
     "Properties": {
-      "UserTokens": ["<XLTOKEN>"],
+      "UserTokens": ["{{XLTOKEN}}"],
       "SandboxId": "RETAIL"
     },
     "RelyingParty": "rp://api.minecraftservices.com/",
     "TokenType": "JWT"
   }
+}
+
+vars:pre-request {
+  XLTOKEN: 
 }
 
 settings {

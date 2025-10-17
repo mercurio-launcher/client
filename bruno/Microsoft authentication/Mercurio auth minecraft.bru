@@ -12,8 +12,13 @@ post {
 
 body:json {
   {
-    "identityToken": "XBL3.0 x=<uhs>;<XSTSToken>"
+    "identityToken": "XBL3.0 x={{uhs}};{{XSTSToken}}"
   }
+}
+
+vars:pre-request {
+  uhs: 
+  XSTSToken: 
 }
 
 settings {

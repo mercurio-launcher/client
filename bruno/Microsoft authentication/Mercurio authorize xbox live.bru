@@ -1,0 +1,31 @@
+meta {
+  name: Mercurio authorize xbox live
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://xsts.auth.xboxlive.com/xsts/authorize
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "Properties": {
+      "UserTokens": ["{{XLTOKEN}}"],
+      "SandboxId": "RETAIL"
+    },
+    "RelyingParty": "rp://api.minecraftservices.com/",
+    "TokenType": "JWT"
+  }
+}
+
+vars:pre-request {
+  XLTOKEN: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

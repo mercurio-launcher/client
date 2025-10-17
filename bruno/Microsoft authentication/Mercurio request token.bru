@@ -1,0 +1,46 @@
+meta {
+  name: Mercurio request token
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://login.microsoftonline.com/consumers/oauth2/v2.0/token
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "client_id":"51149666-2bff-4a6e-8d7b-01c45772ba58",
+    "scope": "XboxLive.signin offline_access openid profile"
+  }
+}
+
+body:form-urlencoded {
+  client_id: {{client_id}}
+  grant_type: {{grant_type}}
+  device_code: {{device_code}}
+}
+
+body:multipart-form {
+  client_id: {{client_id}}
+  device_code: {{device_code}}
+  grant_type: {{grant_type}}
+}
+
+vars:pre-request {
+  grant_type: urn:ietf:params:oauth:grant-type:device_code
+}
+
+script:pre-request {
+  var d_code = bru.getGlobalEnvVar("device_code")
+  bru.setVar("device_code",  d_code)
+  
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

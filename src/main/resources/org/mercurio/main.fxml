@@ -9,20 +9,20 @@
 
     <!-- BARRA DE VENTANA -->
     <top>
-        <HBox fx:id="windowBar" styleClass="window-bar" spacing="8">
+        <HBox fx:id="windowBar" prefWidth="1061.0" spacing="8" styleClass="window-bar">
             <children>
-                <Label text="Mercurio" styleClass="window-title"/>
-                <Pane HBox.hgrow="ALWAYS"/>
+                <Label styleClass="window-title" text="" />
+                <Pane HBox.hgrow="ALWAYS" />
                 <HBox spacing="6">
                     <children>
-                        <Button fx:id="btnMinimize" styleClass="win-btn" text="—"/>
-                        <Button fx:id="btnMaximize" styleClass="win-btn" text="▢"/>
-                        <Button fx:id="btnClose"    styleClass="win-btn" text="✕"/>
+                        <Button fx:id="btnMinimize" styleClass="win-btn" text="—" />
+                        <Button fx:id="btnMaximize" styleClass="win-btn" text="▢" />
+                        <Button fx:id="btnClose" styleClass="win-btn" text="✕" />
                     </children>
                 </HBox>
             </children>
             <padding>
-                <Insets top="6" right="8" bottom="6" left="10"/>
+                <Insets bottom="6" left="10" right="8" top="6" />
             </padding>
         </HBox>
     </top>

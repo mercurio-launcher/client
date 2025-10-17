@@ -23,7 +23,7 @@ public class MainController {
 
     @FXML private ToggleButton btnHome;
     @FXML private ToggleButton btnSettings;
-    @FXML private ToggleButton btnReports;
+    @FXML private ToggleButton btnInstances;
     @FXML private ToggleButton btnProfile;
     @FXML private ToggleButton btnAnalytics;
     @FXML private ToggleButton btnTasks;
@@ -46,7 +46,7 @@ public class MainController {
         // Agrupar los ToggleButton
         btnHome.setToggleGroup(navGroup);
         btnSettings.setToggleGroup(navGroup);
-        btnReports.setToggleGroup(navGroup);
+        btnInstances.setToggleGroup(navGroup);
         btnProfile.setToggleGroup(navGroup);
         btnAnalytics.setToggleGroup(navGroup);
         btnTasks.setToggleGroup(navGroup);
@@ -65,7 +65,7 @@ public class MainController {
         // Eventos de navegación
         btnHome.setOnAction(e -> navigateTo("Home", "/org/mercurio/views/HomeView.fxml"));
         btnSettings.setOnAction(e -> navigateTo("Settings", "/org/mercurio/views/SettingsView.fxml"));
-        btnReports.setOnAction(e -> navigateTo("Reports", "/org/mercurio/views/ReportsView.fxml"));
+        btnInstances.setOnAction(e -> navigateTo("Instances", "/org/mercurio/views/InstancesView.fxml"));
         btnProfile.setOnAction(e -> navigateTo("Profile","/org/mercurio/views/ProfileView.fxml"));
         btnAnalytics.setOnAction(e -> navigateTo("Analalytics","/org/mercurio/views/AnalyticsView.fxml"));
         btnTasks.setOnAction(e -> navigateTo("Tasks","/org/mercurio/views/TasksView.fxml"));

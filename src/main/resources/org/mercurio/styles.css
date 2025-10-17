@@ -1,6 +1,9 @@
-/* ====== Paleta y base ====== */
-:root {
+/* ===========================================================
+   MERCURIO APP - GLOBAL STYLES (Dark Purple Theme)
+   =========================================================== */
 
+/* ====== PALETA Y BASE ====== */
+.root {
     -app-bg: #16171B;
     -sidebar-bg: #1B1D22;
     -content-bg: #20232A;
@@ -17,18 +20,12 @@
     -selected-border: #A78BFA;
     -danger: #EF4444;
 
-
-
-}
-
-.root {
     -fx-background-color: -app-bg;
     -fx-font-family: "Segoe UI", system-ui, Roboto, Arial;
     -fx-text-fill: -text;
 }
 
-
-/* ====== Sidebar ====== */
+/* ====== SIDEBAR ====== */
 .sidebar {
     -fx-background-color: -sidebar-bg;
     -fx-border-color: -divider;
@@ -47,20 +44,13 @@
     -fx-padding: 10 12 10 12;
     -fx-background-radius: 8;
 }
-
-/* Hover */
-.nav-btn:hover {
-    -fx-background-color: -btn-bg-hover;
-}
-
-/* Estado seleccionado (activo) */
+.nav-btn:hover { -fx-background-color: -btn-bg-hover; }
 .toggle-button.nav-btn:selected {
     -fx-background-color: -selected;
     -fx-border-color: -selected-border;
     -fx-border-width: 1;
     -fx-border-radius: 8;
 }
-
 .sidebar-exit {
     -fx-background-color: transparent;
     -fx-text-fill: -danger;
@@ -70,34 +60,58 @@
 }
 .sidebar-exit:hover { -fx-background-color: -danger; }
 
-/* Contenido */
+/* ====== CONTENIDO PRINCIPAL ====== */
 .content-root { -fx-background-color: -content-bg; }
-
 .section-h1 {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: -text;
 }
 
-/* Cards para Home */
+/* ====== CARDS ====== */
 .card {
     -fx-background-color: -btn-bg;
     -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 16, 0.2, 0, 6);
-    -fx-min-width: 260;
+    -fx-border-color: -divider;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.1, 0, 3);
 }
 .card-title {
     -fx-text-fill: -text;
     -fx-font-weight: bold;
-    -fx-padding: 0 0 4 0;
+}
+.card-subtitle {
+    -fx-text-fill: -muted;
+    -fx-font-size: 12px;
 }
 
-/* Controles base */
+/* ====== KPI CARDS ====== */
+.kpi-card {
+    -fx-background-color: -btn-bg;
+    -fx-background-radius: 12;
+    -fx-border-color: -divider;
+    -fx-border-radius: 12;
+    -fx-padding: 16;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 180;
+    -fx-pref-height: 110;
+    -fx-spacing: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.15, 0, 3);
+}
+.kpi-card:hover {
+    -fx-background-color: -btn-bg-hover;
+    -fx-cursor: hand;
+}
+.kpi-label { -fx-text-fill: -muted; -fx-font-size: 12px; }
+.kpi-value { -fx-text-fill: -text; -fx-font-size: 22px; -fx-font-weight: bold; }
+.kpi-foot { -fx-text-fill: -muted; -fx-font-size: 11px; }
+
+/* ====== TEXTO GENERAL ====== */
 .label { -fx-text-fill: -text; }
 .button { -fx-text-fill: -text; }
 .separator *.line { -fx-background-color: -divider; }
 
-/* barra superior */
+/* ====== BARRA SUPERIOR ====== */
 .window-bar {
     -fx-background-color: -header-bg;
     -fx-border-color: -divider;
@@ -109,8 +123,6 @@
     -fx-text-fill: -text;
     -fx-font-weight: bold;
 }
-
-/* Botones ventana */
 .win-btn {
     -fx-background-color: -btn-bg;
     -fx-text-fill: -text;
@@ -121,3 +133,51 @@
 }
 .win-btn:hover { -fx-background-color: -btn-bg-hover; }
 #btnClose:hover { -fx-background-color: -danger; }
+
+/* ====== HOME Y GENERAL ====== */
+.home-scroll { -fx-background-color: transparent; }
+.home-container {
+    -fx-padding: 24 24 40 24;
+    -fx-background-color: -content-bg;
+}
+.section-title {
+    -fx-text-fill: -text;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* ====== NUEVOS BOTONES ====== */
+.button-primary {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.button-primary:hover { -fx-background-color: derive(-primary, 10%); }
+
+.button-ghost {
+    -fx-background-color: transparent;
+    -fx-border-color: -primary;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-text-fill: -primary;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.button-ghost:hover { -fx-background-color: -primary-ghost; }
+
+.button-danger {
+    -fx-background-color: -danger;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.button-danger:hover { -fx-background-color: derive(-danger, 10%); }
+
+/* ====== FOOTER ====== */
+.home-footer .label { -fx-text-fill: -muted; }

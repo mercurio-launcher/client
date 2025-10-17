@@ -1,40 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+
     <children>
-        <VBox spacing="16"
-              AnchorPane.topAnchor="24"
-              AnchorPane.leftAnchor="24"
-              AnchorPane.rightAnchor="24">
-            <children>
-                <Label text="Perfil de Usuario" styleClass="section-h1"/>
-                <Label text="Aquí puedes gestionar tu información personal." wrapText="true"/>
+        <ScrollPane fitToWidth="true"
+                    AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                    AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                    styleClass="home-scroll">
+            <content>
+                <VBox spacing="32" styleClass="home-container">
+                    <padding>
+                        <Insets top="32" right="32" bottom="48" left="32"/>
+                    </padding>
 
-                <GridPane hgap="12" vgap="12">
-                    <columnConstraints>
-                        <ColumnConstraints percentWidth="30"/>
-                        <ColumnConstraints percentWidth="70"/>
-                    </columnConstraints>
+                    <!-- CABECERA PERFIL -->
+                    <HBox spacing="28" alignment="CENTER_LEFT" styleClass="card">
+                        <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                        <children>
+                            <!-- Avatar circular -->
+                            <StackPane prefWidth="120" prefHeight="120"
+                                       style="-fx-background-color: -btn-bg; -fx-background-radius: 100;">
+                                <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                                    <image>
+                                        <Image url="@/img/mercurio-logo.png" />
+                                    </image>
+                                </ImageView>
+                            </StackPane>
 
-                    <children>
-                        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <TextField promptText="Introduce tu nombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                            <!-- Datos del perfil -->
+                            <VBox spacing="6">
+                                <Label text="rumaking" styleClass="section-title"/>
+                                <Label text="Jugador principal" styleClass="card-subtitle"/>
+                                <Label text="Último acceso: 17 de octubre de 2025" styleClass="muted"/>
+                                <HBox spacing="10">
+                                    <Button text="Editar perfil" styleClass="button-primary"/>
+                                    <Button text="Cerrar sesión" styleClass="button-danger"/>
+                                </HBox>
+                            </VBox>
+                        </children>
+                    </HBox>
 
-                        <Label text="Correo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                        <TextField promptText="usuario@dominio.com" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <!-- ACTIVIDAD -->
+                    <VBox spacing="12">
+                        <Label text="Actividad y logros" styleClass="section-title"/>
+                        <FlowPane hgap="16" vgap="16">
+                            <VBox styleClass="kpi-card" spacing="4">
+                                <Label text="Horas jugadas" styleClass="kpi-label"/>
+                                <Label text="132" styleClass="kpi-value"/>
+                                <Label text="Esta semana: 8h" styleClass="kpi-foot"/>
+                            </VBox>
+                            <VBox styleClass="kpi-card" spacing="4">
+                                <Label text="Mundos creados" styleClass="kpi-label"/>
+                                <Label text="12" styleClass="kpi-value"/>
+                                <Label text="3 recientes" styleClass="kpi-foot"/>
+                            </VBox>
+                            <VBox styleClass="kpi-card" spacing="4">
+                                <Label text="Mods instalados" styleClass="kpi-label"/>
+                                <Label text="45" styleClass="kpi-value"/>
+                                <Label text="Actualizados: 32" styleClass="kpi-foot"/>
+                            </VBox>
+                            <VBox styleClass="kpi-card" spacing="4">
+                                <Label text="Servidores favoritos" styleClass="kpi-label"/>
+                                <Label text="5" styleClass="kpi-value"/>
+                                <Label text="Activos: 4" styleClass="kpi-foot"/>
+                            </VBox>
+                        </FlowPane>
+                    </VBox>
 
-                        <Label text="Contraseña:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                        <PasswordField promptText="********" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Separator/>
 
-                        <Button text="Actualizar datos" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                    </children>
-                </GridPane>
-            </children>
-        </VBox>
+                    <!-- INFORMACIÓN CUENTA -->
+                    <VBox spacing="12">
+                        <Label text="Información de la cuenta" styleClass="section-title"/>
+                        <GridPane hgap="20" vgap="12">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="30"/>
+                                <ColumnConstraints percentWidth="70"/>
+                            </columnConstraints>
+
+                            <Label text="Correo electrónico:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="kpi-label"/>
+                            <Label text="rumaking@example.com" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="kpi-value"/>
+
+                            <Label text="UUID de jugador:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="kpi-label"/>
+                            <Label text="a3b1-42f1-99x9" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="kpi-value"/>
+
+                            <Label text="Tipo de cuenta:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="kpi-label"/>
+                            <Label text="Microsoft" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="kpi-value"/>
+
+                            <Label text="Ubicación predeterminada:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="kpi-label"/>
+                            <Label text="C:/Users/Rumaking/AppData/Roaming/.minecraft"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                   wrapText="true" styleClass="muted"/>
+                        </GridPane>
+                    </VBox>
+
+                    <Separator/>
+
+                    <!-- COMUNIDAD -->
+                    <VBox spacing="12">
+                        <Label text="Comunidad y enlaces" styleClass="section-title"/>
+                        <HBox spacing="16">
+                            <Button text="GitHub del proyecto" styleClass="button-ghost"/>
+                            <Button text="Discord oficial" styleClass="button-ghost"/>
+                            <Button text="Web del lanzador" styleClass="button-ghost"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>

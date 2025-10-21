@@ -1,6 +1,5 @@
 /* ====== Paleta y base ====== */
 :root {
-
     -app-bg: #16171B;
     -sidebar-bg: #1B1D22;
     -content-bg: #20232A;
@@ -16,9 +15,6 @@
     -selected: rgba(124,58,237,0.22);
     -selected-border: #A78BFA;
     -danger: #EF4444;
-
-
-
 }
 
 .root {

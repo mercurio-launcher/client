@@ -1,10 +1,10 @@
 package org.mercurio.instance_manager;
 
 public class Instance {
-    public String version;
+    private String version;
     private float maxRam;
     private float minRam;
-
+    private String name;
 
     public void setVersion(String version) {
         this.version = version;
@@ -30,5 +30,12 @@ public class Instance {
         return this.minRam;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 

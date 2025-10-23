@@ -2,14 +2,11 @@ package org.mercurio.instance_manager;
 
 import org.mercurio.config.Configuration;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class InstanceManager {
     private final List<Instance> instances = new ArrayList<>();
@@ -30,8 +27,36 @@ public class InstanceManager {
         }
     }
 
-    private void saveConfig(Instance instance) {
+    private void deleteDir(File file) {
+        try {
+            for (File subfile : Objects.requireNonNull(file.listFiles())) {
+                if (subfile.isDirectory()) {
+                    deleteDir(subfile);
+                }
+                subfile.delete();
+            }
+    } catch(Exception e) {
+        e.printStackTrace();
+    }
 
+    }
+
+    public void deleteDir(Instance instance) {
+        Path path = Configuration.getInstance().getDataPath();
+        try {
+            Files.delete(path.resolve("/instances/", instance.getName()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void saveConfig(Instance instance) {
+        Path path = Configuration.getInstance().getDataPath();
+        try {
+            Files.createDirectories(path.resolve("/instances/", instance.getName()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Instance> getInstances() {

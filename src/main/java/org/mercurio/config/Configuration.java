@@ -3,7 +3,6 @@ package org.mercurio.config;
 
 import java.io.*;
 import java.nio.file.Path;
-import java.util.concurrent.locks.Condition;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

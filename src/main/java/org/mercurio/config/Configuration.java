@@ -57,6 +57,10 @@ public class Configuration implements Serializable {
         try (Reader reader = new FileReader(file)) {
             Gson gson = new Gson();
             instance = gson.fromJson(reader, Configuration.class);
+
+            if (instance != null) {
+                instance.setDataPath(dataPath);
+            }
         }
     }
 

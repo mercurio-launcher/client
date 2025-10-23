@@ -14,11 +14,9 @@ import java.util.stream.Stream;
 public class InstanceManager {
     private final List<Instance> instances = new ArrayList<>();
 
-    public Instance createInstance(Instance instance) throws IOException{
+    public void createInstance(Instance instance) throws IOException{
         createDir(instance);
         saveInstance(instance);
-        instances.add(instance);
-        return instance;
     }
 
     public void loadInstances() throws IOException {
@@ -61,9 +59,8 @@ public class InstanceManager {
 
     public void saveInstance(Instance instance) throws IOException {
         Path path = Configuration.getInstance().getDataPath();
+        Path pathToFile = path.resolve("instances", instance.getName(), "config.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Path pathToFile = path.resolve("instance", instance.getName(), "config.json");
-        if (!Files.exists(pathToFile)) Files.createFile(pathToFile);
         try (FileWriter writer = new FileWriter(pathToFile.toFile())) {
             gson.toJson(instance, writer);
         }

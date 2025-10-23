@@ -102,7 +102,6 @@ public class MainController {
         Stage stage = (Stage) scene.getWindow();
         if (stage == null) return;
 
-        // Arrastrar ventana desde la barra
         windowBar.setOnMousePressed(ev -> {
             dragOffsetX = ev.getSceneX();
             dragOffsetY = ev.getSceneY();
@@ -112,14 +111,12 @@ public class MainController {
             stage.setY(ev.getScreenY() - dragOffsetY);
         });
 
-        // Doble click para maximizar/restaurar
         windowBar.setOnMouseClicked(ev -> {
             if (ev.getClickCount() == 2) {
                 stage.setMaximized(!stage.isMaximized());
             }
         });
 
-        // Botones (si existen en el FXML)
         if (btnMinimize != null) btnMinimize.setOnAction(e -> stage.setIconified(true));
         if (btnMaximize != null) btnMaximize.setOnAction(e -> stage.setMaximized(!stage.isMaximized()));
         if (btnClose != null)    btnClose.setOnAction(e -> stage.close());

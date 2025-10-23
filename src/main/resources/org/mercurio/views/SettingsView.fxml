@@ -3,72 +3,262 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
 
     <children>
-        <VBox spacing="28" styleClass="home-container"
-              AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
+        <ScrollPane fitToWidth="true" styleClass="home-scroll"
+                    AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                    AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <content>
+                <VBox spacing="28" styleClass="home-container">
 
-            <Label text="Configuración general" styleClass="section-title"/>
+                    <!-- Título principal -->
+                    <Label text="Configuración" styleClass="section-page-title"/>
 
-            <VBox spacing="16" styleClass="card">
-                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-                <Label text="Preferencias de interfaz" styleClass="card-title"/>
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="Tema actual:" styleClass="kpi-label"/>
-                    <ChoiceBox>
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="Oscuro"/>
-                                <String fx:value="Claro"/>
-                            </FXCollections>
-                        </items>
-                    </ChoiceBox>
-                </HBox>
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="Idioma:" styleClass="kpi-label"/>
-                    <ChoiceBox>
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="Español"/>
-                                <String fx:value="Inglés"/>
-                            </FXCollections>
-                        </items>
-                    </ChoiceBox>
-                </HBox>
-            </VBox>
+                    <!-- ===== Cuenta y perfil ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Cuenta y perfil" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <ImageView fitWidth="48" fitHeight="48" pickOnBounds="true" preserveRatio="true" fx:id="imgAvatar"/>
+                            <VBox spacing="4">
+                                <Label text="Usuario actual" styleClass="kpi-label"/>
+                                <Label text="rumaking"/>
+                            </VBox>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <MenuButton text="Acciones" styleClass="menu-button">
+                                <items>
+                                    <MenuItem text="Cambiar avatar"/>
+                                    <MenuItem text="Cerrar sesión"/>
+                                </items>
+                            </MenuButton>
+                        </HBox>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Carpeta de datos" styleClass="kpi-label"/>
+                            <TextField promptText="C:/Users/rumaking/AppData/Roaming/Mercurio" fx:id="txtDataDir"/>
+                            <SplitMenuButton text="Explorar" styleClass="split-menu-button">
+                                <items>
+                                    <MenuItem text="Abrir carpeta"/>
+                                    <MenuItem text="Copiar ruta"/>
+                                </items>
+                            </SplitMenuButton>
+                        </HBox>
+                    </VBox>
 
-            <VBox spacing="16" styleClass="card">
-                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-                <Label text="Gestión de recursos" styleClass="card-title"/>
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="Ruta de instalación:" styleClass="kpi-label"/>
-                    <TextField promptText="C:/Users/Rumaking/AppData/Roaming/.minecraft"/>
-                    <Button text="Cambiar" styleClass="button-ghost"/>
-                </HBox>
-                <HBox spacing="12" alignment="CENTER_LEFT">
-                    <Label text="Memoria asignada:" styleClass="kpi-label"/>
-                    <Slider min="1" max="16" value="4" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
-                    <Label text="GB" styleClass="muted"/>
-                </HBox>
-            </VBox>
+                    <!-- ===== Apariencia e idioma ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Apariencia e idioma" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Tema" styleClass="kpi-label"/>
+                            <ChoiceBox fx:id="cbTema">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Oscuro"/>
+                                        <String fx:value="Claro"/>
+                                        <String fx:value="Sistema"/>
+                                    </FXCollections>
+                                </items>
+                            </ChoiceBox>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label text="Color de acento" styleClass="kpi-label"/>
+                            <ChoiceBox fx:id="cbAcento">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Púrpura"/>
+                                        <String fx:value="Azul"/>
+                                        <String fx:value="Verde"/>
+                                        <String fx:value="Naranja"/>
+                                    </FXCollections>
+                                </items>
+                            </ChoiceBox>
+                        </HBox>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Idioma" styleClass="kpi-label"/>
+                            <ComboBox fx:id="cbIdioma">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Español"/>
+                                        <String fx:value="Inglés"/>
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label text="Tamaño de fuente" styleClass="kpi-label"/>
+                            <Slider fx:id="sliderFuente" min="12" max="20" value="14" majorTickUnit="2" snapToTicks="true"/>
+                            <Label text="pt" styleClass="muted"/>
+                            <ToggleButton text="Alto contraste" fx:id="tglContraste"/>
+                        </HBox>
+                    </VBox>
 
-            <VBox spacing="16" styleClass="card">
-                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-                <Label text="Actualizaciones y conexión" styleClass="card-title"/>
-                <CheckBox text="Buscar actualizaciones automáticamente" selected="true"/>
-                <CheckBox text="Permitir pre-releases"/>
-                <CheckBox text="Enviar datos anónimos de uso"/>
-            </VBox>
+                    <!-- ===== Accesibilidad ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Accesibilidad" styleClass="card-title-lg"/>
+                        <CheckBox text="Reducir animaciones" fx:id="chkReducirAnim"/>
+                        <CheckBox text="Mostrar descripciones extendidas" fx:id="chkTooltips"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Notas" styleClass="kpi-label"/>
+                            <TextArea promptText="Añade notas de accesibilidad o ayudas personalizadas..." prefRowCount="3" fx:id="txtNotasAcc"/>
+                        </HBox>
+                    </VBox>
 
-            <HBox spacing="16" alignment="CENTER_RIGHT">
-                <Button text="Restaurar valores predeterminados" styleClass="button-ghost"/>
-                <Button text="Guardar cambios" styleClass="button-primary"/>
-            </HBox>
+                    <!-- ===== Recursos ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Recursos" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Ruta de instalación" styleClass="kpi-label"/>
+                            <TextField promptText="C:/Users/Rumaking/AppData/Roaming/.minecraft" fx:id="txtRutaInstalacion"/>
+                            <Button text="Cambiar" styleClass="button-ghost" fx:id="btnCambiarRuta"/>
+                        </HBox>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Memoria (RAM)" styleClass="kpi-label"/>
+                            <Slider min="1" max="16" value="4" majorTickUnit="1" snapToTicks="true" fx:id="sliderRam"/>
+                            <Label text="GB" styleClass="muted"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label text="Usar GPU dedicada" styleClass="kpi-label"/>
+                            <CheckBox fx:id="chkUsarGPU"/>
+                        </HBox>
+                    </VBox>
 
-        </VBox>
+                    <!-- ===== Descargas y caché ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Descargas y caché" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Carpeta de descargas" styleClass="kpi-label"/>
+                            <TextField promptText="C:/Users/rumaking/Downloads/Mercurio" fx:id="txtDescargas"/>
+                            <Button text="Cambiar" styleClass="button-ghost" fx:id="btnCambiarDescargas"/>
+                        </HBox>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Tamaño máximo de caché" styleClass="kpi-label"/>
+                            <Slider min="256" max="8192" value="1024" majorTickUnit="1024" snapToTicks="true" fx:id="sliderCache"/>
+                            <Label text="MB" styleClass="muted"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="Vaciar caché" styleClass="button-danger" fx:id="btnVaciarCache"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- ===== Privacidad y datos ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Privacidad y datos" styleClass="card-title-lg"/>
+                        <CheckBox text="Enviar datos anónimos de uso" fx:id="chkTelemetria"/>
+                        <CheckBox text="Permitir diagnósticos avanzados" fx:id="chkDiag"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Nivel de registros (logs)" styleClass="kpi-label"/>
+                            <ChoiceBox fx:id="cbLogLevel">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Error"/>
+                                        <String fx:value="Warning"/>
+                                        <String fx:value="Info"/>
+                                        <String fx:value="Debug"/>
+                                    </FXCollections>
+                                </items>
+                            </ChoiceBox>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="Abrir carpeta de logs" styleClass="button-ghost" fx:id="btnAbrirLogs"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- ===== Red y proxy ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Red y proxy" styleClass="card-title-lg"/>
+                        <CheckBox text="Usar configuración del sistema" selected="true" fx:id="chkProxySistema"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Servidor proxy" styleClass="kpi-label"/>
+                            <TextField promptText="proxy.midominio.local" fx:id="txtProxyHost"/>
+                            <Label text="Puerto" styleClass="kpi-label"/>
+                            <TextField promptText="8080" fx:id="txtProxyPort" prefWidth="80"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <CheckBox text="Autenticación" fx:id="chkProxyAuth"/>
+                            <TextField promptText="usuario" fx:id="txtProxyUser" disable="true"/>
+                            <PasswordField promptText="contraseña" fx:id="txtProxyPass" disable="true"/>
+                        </HBox>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Exclusiones (coma)" styleClass="kpi-label"/>
+                            <TextField promptText="localhost, 127.0.0.1, *.intranet" fx:id="txtProxyBypass"/>
+                        </HBox>
+                        <CheckBox text="Comprobar conectividad en segundo plano" fx:id="chkHealthcheck"/>
+                    </VBox>
+
+                    <!-- ===== Actualizaciones ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Actualizaciones" styleClass="card-title-lg"/>
+                        <CheckBox text="Buscar actualizaciones automáticamente" selected="true" fx:id="chkAutoUpdate"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Canal" styleClass="kpi-label"/>
+                            <ChoiceBox fx:id="cbCanal">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Estable"/>
+                                        <String fx:value="Beta"/>
+                                        <String fx:value="Nightly"/>
+                                    </FXCollections>
+                                </items>
+                            </ChoiceBox>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <MenuButton text="Acciones" styleClass="menu-button">
+                                <items>
+                                    <MenuItem text="Buscar ahora"/>
+                                    <MenuItem text="Ver historial"/>
+                                </items>
+                            </MenuButton>
+                            <CheckBox text="Permitir pre-releases" fx:id="chkPrereleases"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- ===== Importar / Exportar ===== -->
+                    <VBox spacing="16" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Copia de seguridad de ajustes" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <SplitMenuButton text="Exportar configuración" styleClass="split-menu-button">
+                                <items>
+                                    <MenuItem text="Exportar todo"/>
+                                    <MenuItem text="Solo apariencia"/>
+                                    <MenuItem text="Solo red y proxy"/>
+                                </items>
+                            </SplitMenuButton>
+                            <Button text="Importar configuración" styleClass="button-ghost" fx:id="btnImportSettings"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="Restaurar valores predeterminados" styleClass="button-danger" fx:id="btnResetDefaults"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- ===== Acerca de ===== -->
+                    <VBox spacing="12" styleClass="card">
+                        <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+                        <Label text="Acerca de Mercurio" styleClass="card-title-lg"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="form-row">
+                            <Label text="Versión" styleClass="kpi-label"/>
+                            <Label text="1.0.0" fx:id="lblVersion"/>
+                            <Separator prefWidth="20"/>
+                            <Label text="Canal" styleClass="kpi-label"/>
+                            <Label text="Estable" fx:id="lblCanal"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="Licencias" styleClass="button-ghost" fx:id="btnLicencias"/>
+                            <Label text="© 2025 Mercurio Launcher — Todos los derechos reservados." styleClass="muted"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Botonera inferior -->
+                    <HBox spacing="16" alignment="CENTER_RIGHT">
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Button text="Cancelar" styleClass="button-ghost" fx:id="btnCancelar"/>
+                        <Button text="Guardar cambios" styleClass="button-primary" fx:id="btnGuardar"/>
+                    </HBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>

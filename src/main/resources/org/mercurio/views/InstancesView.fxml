@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
-            <children>
-                <Label text="Informes" styleClass="section-h1"/>
-                <Label wrapText="true" text="Aquí podrás listar y abrir informes, o mostrar tablas y gráficos."/>
-                <VBox styleClass="card" spacing="8">
-                    <children>
-                        <Label text="Estado" styleClass="card-title"/>
-                        <Label text="No hay informes generados aún."/>
-                        <Button text="Generar informe"/>
-                    </children>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="content-root"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <VBox spacing="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                <Label styleClass="section-h1" text="Instancias de Minecraft" />
+                <Label styleClass="label" text="Gestiona y lanza tus diferentes versiones y configuraciones de Minecraft." />
+            </VBox>
+            <Button styleClass="button-primary" text="+ Crear Nueva Instancia" />
+        </HBox>
+        <Separator styleClass="separator" />
+    </VBox>
+
+    <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="home-scroll"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+        <content>
+            <!-- Fondo correcto dentro del scroll -->
+            <VBox spacing="10" fillWidth="true" styleClass="content-root">
+                <padding>
+                    <Insets bottom="24" left="24" right="24" top="0" />
+                </padding>
+
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
                     <padding>
-                        <Insets top="12" right="12" bottom="12" left="12"/>
+                        <Insets bottom="15" left="15" right="15" top="15" />
                     </padding>
-                </VBox>
-            </children>
-        </VBox>
-    </children>
+
+                    <VBox minWidth="200.0" spacing="4">
+                        <Label styleClass="card-title" text="Instancia Vanilla" />
+                        <Label styleClass="card-subtitle" text="Versión: 1.20.4 (Forge)" />
+                        <Label styleClass="card-subtitle" text="Último juego: Hace 2 días" />
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+                    <HBox spacing="10">
+                        <Button minWidth="80.0" styleClass="button-primary" text="Jugar" />
+                        <Button minWidth="80.0" styleClass="button-ghost" text="Editar" />
+                        <Button minWidth="80.0" styleClass="button-danger" text="Eliminar" />
+                    </HBox>
+                </HBox>
+            </VBox>
+        </content>
+    </ScrollPane>
 </AnchorPane>

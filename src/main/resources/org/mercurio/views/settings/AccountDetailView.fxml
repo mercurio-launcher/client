@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true">
+    <content>
+        <VBox spacing="20" styleClass="home-container">
+            <!-- ===== Apariencia e idioma ===== -->
+            <VBox spacing="16" styleClass="card">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                <Label styleClass="card-title-lg" text="Apariencia e idioma"/>
+                <!-- Pega aquí tus HBox/controles de tema, acento, idioma, fuente, contraste -->
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

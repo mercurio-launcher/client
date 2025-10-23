@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true">
+    <content>
+        <VBox spacing="20" styleClass="home-container">
+            <!-- ===== Actualizaciones ===== -->
+            <VBox spacing="16" styleClass="card">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                <Label styleClass="card-title-lg" text="Actualizaciones"/>
+                <!-- Pega aquí tus controles de búsqueda, canal, prereleases, acciones -->
+            </VBox>
+
+            <!-- ===== Acerca de ===== (si prefieres, colócalo en General) -->
+            <VBox spacing="12" styleClass="card">
+                <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+                <Label styleClass="card-title-lg" text="Acerca de Mercurio"/>
+                <!-- Pega aquí tu HBox de versión, canal, licencias, copyright -->
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

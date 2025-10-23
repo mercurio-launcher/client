@@ -11,6 +11,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.mercurio.managers.HttpManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -71,6 +72,14 @@ public class MainController {
         btnTasks.setOnAction(e -> navigateTo("Tasks","/org/mercurio/views/TasksView.fxml"));
         btnHelp.setOnAction(e -> navigateTo("Help","/org/mercurio/views/HelpView.fxml"));
 
+
+        btnProfile.setOnAction(e -> {
+            try {
+                HttpManager.AuthResult res = HttpManager.getMicrosoftAuthorizationToken();
+            } catch (IOException | InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         // Carga inicial
         btnHome.setSelected(true);
         btnHome.getStyleClass().add("active"); // <-- Marca Home como activo al iniciar

@@ -1,4 +1,4 @@
-package org.mercurio;
+package org.mercurio.controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

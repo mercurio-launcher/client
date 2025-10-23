@@ -1,6 +1,7 @@
-package org.mercurio.instance_manager;
+package org.mercurio.managers;
 
 import org.mercurio.config.Configuration;
+import org.mercurio.models.Instance;
 
 import java.io.File;
 import java.io.IOException;

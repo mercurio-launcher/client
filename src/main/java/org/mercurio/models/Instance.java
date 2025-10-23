@@ -1,4 +1,4 @@
-package org.mercurio.instance_manager;
+package org.mercurio.models;
 
 public class Instance {
     private String version;

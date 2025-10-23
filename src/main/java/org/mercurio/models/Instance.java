@@ -1,10 +1,13 @@
 package org.mercurio.models;
 
+
 public class Instance {
     private String version;
     private float maxRam;
     private float minRam;
-    private String name;
+    private transient String name;
+
+
 
     public void setVersion(String version) {
         this.version = version;
@@ -30,12 +33,8 @@ public class Instance {
         return this.minRam;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 }
 

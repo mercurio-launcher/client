@@ -22,21 +22,17 @@ public class Configuration implements Serializable {
         return instance;
     }
 
-    public static void instanceConfig(Path dataPath) {
+    public static void instanceConfig(Path dataPath) throws IOException {
         Path filePath = dataPath.resolve("config.json");
         File file = filePath.toFile();
         if (!file.exists()) {
-            try {
-                if (!file.createNewFile()) {
-                    System.out.println("Created configuration file");
-                }
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                try (FileWriter writer = new FileWriter(file)) {
-                    instance = new Configuration();
-                    gson.toJson(instance, writer);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (!file.createNewFile()) {
+                System.out.println("Created configuration file");
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try (FileWriter writer = new FileWriter(file)) {
+                instance = new Configuration();
+                gson.toJson(instance, writer);
             }
         } else {
             Configuration.loadConfig(dataPath);
@@ -51,18 +47,16 @@ public class Configuration implements Serializable {
 
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(this, writer);
-        }
+        }`
     }
 
-    public static void loadConfig(Path dataPath) {
+    public static void loadConfig(Path dataPath) throws IOException {
         Path filePath = dataPath.resolve("config.json");
         File file = filePath.toFile();
 
         try (Reader reader = new FileReader(file)) {
             Gson gson = new Gson();
             instance = gson.fromJson(reader, Configuration.class);
-        } catch (IOException e) {
-            instance = new Configuration();
         }
     }
 

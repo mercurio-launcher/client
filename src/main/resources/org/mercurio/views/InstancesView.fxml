@@ -4,17 +4,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.mercurio.controllers.InstancesController">
     <children>
         <VBox spacing="16" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24">
             <children>
-                <Label text="Informes" styleClass="section-h1"/>
-                <Label wrapText="true" text="Aquí podrás listar y abrir informes, o mostrar tablas y gráficos."/>
+                <Label text="Instances" styleClass="section-h1"/>
                 <VBox styleClass="card" spacing="8">
                     <children>
                         <Label text="Estado" styleClass="card-title"/>
-                        <Label text="No hay informes generados aún."/>
-                        <Button text="Generar informe"/>
+
+                        <VBox fx:id="buttonContainer" spacing="8" />
+
                     </children>
                     <padding>
                         <Insets top="12" right="12" bottom="12" left="12"/>

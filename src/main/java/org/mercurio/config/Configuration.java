@@ -47,7 +47,7 @@ public class Configuration implements Serializable {
 
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(this, writer);
-        }`
+        }
     }
 
     public static void loadConfig(Path dataPath) throws IOException {

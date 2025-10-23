@@ -1,166 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane
-        prefHeight="600.0"
-        prefWidth="800.0"
-        styleClass="content-root"
-        xmlns="http://javafx.com/javafx/23"
-        xmlns:fx="http://javafx.com/fxml/1"
->
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="content-root"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
-    <VBox
-            spacing="20.0"
-            AnchorPane.topAnchor="24.0"
-            AnchorPane.leftAnchor="24.0"
-            AnchorPane.rightAnchor="24.0"
-    >
-
+    <VBox spacing="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
         <HBox alignment="CENTER_LEFT" spacing="20">
             <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                <Label text="Instancias de Minecraft" styleClass="section-h1"/>
-                <Label
-                        text="Gestiona y lanza tus diferentes versiones y configuraciones de Minecraft."
-                        styleClass="label"
-                />
+                <Label styleClass="section-h1" text="Instancias de Minecraft" />
+                <Label styleClass="label" text="Gestiona y lanza tus diferentes versiones y configuraciones de Minecraft." />
             </VBox>
-
-            <Button text="+ Crear Nueva Instancia" styleClass="button-primary"/>
+            <Button styleClass="button-primary" text="+ Crear Nueva Instancia" />
         </HBox>
-
-        <Separator styleClass="separator"/>
-
+        <Separator styleClass="separator" />
     </VBox>
 
-    <ScrollPane
-            fitToWidth="true"
-            styleClass="home-scroll"
-            AnchorPane.topAnchor="140.0"
-            AnchorPane.bottomAnchor="0.0"
-            AnchorPane.leftAnchor="0.0"
-            AnchorPane.rightAnchor="0.0"
-    >
+    <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="home-scroll"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
         <content>
-            <VBox spacing="10" styleClass="content-root">
+            <!-- Fondo correcto dentro del scroll -->
+            <VBox spacing="10" fillWidth="true" styleClass="content-root">
                 <padding>
-                    <Insets top="0" right="24" bottom="24" left="24"/>
+                    <Insets bottom="24" left="24" right="24" top="0" />
                 </padding>
 
                 <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
                     <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
+                        <Insets bottom="15" left="15" right="15" top="15" />
                     </padding>
 
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="Instancia Vanilla" styleClass="card-title"/>
-                        <Label text="Versión: 1.20.4 (Forge)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Hace 2 días" styleClass="card-subtitle"/>
+                    <VBox minWidth="200.0" spacing="4">
+                        <Label styleClass="card-title" text="Instancia Vanilla" />
+                        <Label styleClass="card-subtitle" text="Versión: 1.20.4 (Forge)" />
+                        <Label styleClass="card-subtitle" text="Último juego: Hace 2 días" />
                     </VBox>
 
-                    <Region HBox.hgrow="ALWAYS"/>
+                    <Region HBox.hgrow="ALWAYS" />
 
                     <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
-                    </HBox>
-                </HBox>
-
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
-
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="Modpack 'Aetheria'" styleClass="card-title"/>
-                        <Label text="Versión: 1.18.2 (Fabric - 45 mods)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Nunca" styleClass="card-subtitle"/>
-                    </VBox>
-
-                    <Region HBox.hgrow="ALWAYS"/>
-
-                    <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
-                    </HBox>
-                </HBox>
-
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
-
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="Instancia Old School" styleClass="card-title"/>
-                        <Label text="Versión: 1.7.10 (OptiFine)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Hace 1 semana" styleClass="card-subtitle"/>
-                    </VBox>
-
-                    <Region HBox.hgrow="ALWAYS"/>
-
-                    <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
-                    </HBox>
-                </HBox>
-
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="Prueba de Scroll" styleClass="card-title"/>
-                        <Label text="Versión: 1.19.4 (LiteLoader)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Ayer" styleClass="card-subtitle"/>
-                    </VBox>
-                    <Region HBox.hgrow="ALWAYS"/>
-                    <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
-                    </HBox>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="The Ultimate Mod" styleClass="card-title"/>
-                        <Label text="Versión: 1.12.2 (FTB)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Hace 3 semanas" styleClass="card-subtitle"/>
-                    </VBox>
-                    <Region HBox.hgrow="ALWAYS"/>
-                    <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
-                    </HBox>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="card">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
-                    <VBox spacing="4" minWidth="200.0">
-                        <Label text="SkyBlock Challenge" styleClass="card-title"/>
-                        <Label text="Versión: 1.16.5 (Vanilla)" styleClass="card-subtitle"/>
-                        <Label text="Último juego: Nunca" styleClass="card-subtitle"/>
-                    </VBox>
-                    <Region HBox.hgrow="ALWAYS"/>
-                    <HBox spacing="10">
-                        <Button text="Jugar" styleClass="button-primary" minWidth="80.0"/>
-                        <Button text="Editar" styleClass="button-ghost" minWidth="80.0"/>
-                        <Button text="Eliminar" styleClass="button-danger" minWidth="80.0"/>
+                        <Button minWidth="80.0" styleClass="button-primary" text="Jugar" />
+                        <Button minWidth="80.0" styleClass="button-ghost" text="Editar" />
+                        <Button minWidth="80.0" styleClass="button-danger" text="Eliminar" />
                     </HBox>
                 </HBox>
             </VBox>

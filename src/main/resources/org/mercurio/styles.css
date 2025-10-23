@@ -181,3 +181,163 @@
 
 /* ====== FOOTER ====== */
 .home-footer .label { -fx-text-fill: -muted; }
+
+/* ===========================================================
+   COMPLEMENTOS UI - FORMULARIOS Y CONTROLES
+   =========================================================== */
+
+/* Utilidades */
+.muted { -fx-text-fill: -muted; }
+.form-row { -fx-spacing: 12; -fx-alignment: CENTER_LEFT; }
+.section-page-title { -fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: -text; }
+.card-title-lg { -fx-font-size: 18px; -fx-font-weight: 800; -fx-text-fill: -text; }
+
+/* Campos de entrada */
+.text-field, .password-field, .text-area {
+    -fx-background-color: -btn-bg;
+    -fx-text-fill: -text;
+    -fx-prompt-text-fill: -muted;
+    -fx-background-radius: 8;
+    -fx-border-color: -divider;
+    -fx-border-radius: 8;
+    -fx-padding: 8 10;
+}
+.text-area .content { -fx-background-color: transparent; }
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: -primary;
+    -fx-effect: dropshadow(gaussian, -primary-ghost, 8, 0.25, 0, 0);
+}
+
+/* ChoiceBox / ComboBox */
+.choice-box, .combo-box-base {
+    -fx-background-color: -btn-bg;
+    -fx-background-radius: 8;
+    -fx-border-color: -divider;
+    -fx-border-radius: 8;
+    -fx-padding: 4 10;
+    -fx-text-fill: -text;
+}
+.choice-box:focused, .combo-box-base:focused { -fx-border-color: -primary; }
+.choice-box .label, .combo-box-base .text { -fx-text-fill: -text; }
+.combo-box-popup, .context-menu {
+    -fx-background-color: -content-bg;
+    -fx-border-color: -divider;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.menu-item { -fx-text-fill: -text; }
+.menu-item:focused { -fx-background-color: -selected; }
+
+/* MenuButton / SplitMenuButton */
+.menu-button, .split-menu-button {
+    -fx-background-color: -btn-bg;
+    -fx-text-fill: -text;
+    -fx-background-radius: 8;
+    -fx-border-color: -divider;
+    -fx-border-radius: 8;
+    -fx-padding: 6 12;
+}
+.menu-button:hover, .split-menu-button:hover { -fx-background-color: -btn-bg-hover; }
+.menu-button:focused, .split-menu-button:focused { -fx-border-color: -primary; }
+.menu-button > .label, .split-menu-button > .label { -fx-text-fill: -text; }
+.menu-button > .arrow-button, .split-menu-button > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 6 0 6;
+}
+.split-menu-button > .arrow-button:hover { -fx-background-color: -btn-bg-hover; }
+
+/* Toggle / Check / Radio */
+.toggle-button {
+    -fx-background-color: -btn-bg;
+    -fx-text-fill: -text;
+    -fx-background-radius: 8;
+    -fx-border-color: -divider;
+    -fx-border-radius: 8;
+    -fx-padding: 6 12;
+}
+.toggle-button:selected {
+    -fx-background-color: -selected;
+    -fx-border-color: -selected-border;
+}
+.check-box > .box {
+    -fx-background-color: -btn-bg;
+    -fx-border-color: -divider;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+.check-box:selected > .box { -fx-background-color: -selected; -fx-border-color: -selected-border; }
+.radio-button > .radio {
+    -fx-background-color: -btn-bg;
+    -fx-border-color: -divider;
+}
+.radio-button:selected > .radio { -fx-background-color: -selected; -fx-border-color: -selected-border; }
+
+/* Slider */
+.slider .track {
+    -fx-background-color: -divider;
+    -fx-background-radius: 4;
+    -fx-pref-height: 4;
+}
+.slider .thumb {
+    -fx-background-color: -primary;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, -primary-ghost, 6, 0.35, 0, 0);
+}
+
+/* Scrollbars */
+.scroll-pane { -fx-background-color: transparent; }
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+.thumb {
+    -fx-background-color: -btn-bg;
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+}
+.thumb:hover { -fx-background-color: -btn-bg-hover; }
+
+/* Tooltips */
+.tooltip {
+    -fx-background-color: -content-bg;
+    -fx-text-fill: -text;
+    -fx-border-color: -divider;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 6 8;
+}
+
+/* Headers / toolbar opcional */
+.header, .toolbar {
+    -fx-background-color: -header-bg;
+    -fx-border-color: -divider;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 16;
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 12;
+}
+
+/* Badges / chips (opcionales) */
+.badge {
+    -fx-background-color: -selected;
+    -fx-text-fill: -text;
+    -fx-background-radius: 999;
+    -fx-padding: 2 8;
+    -fx-font-size: 11px;
+}
+
+/* ScrollPane: quitar fondo blanco del viewport y del contenido interno */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+/* Asegura que el contenedor principal tenga color de fondo */
+.content-root {
+    -fx-background-color: -content-bg;
+}

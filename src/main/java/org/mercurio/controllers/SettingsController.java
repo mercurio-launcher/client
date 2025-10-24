@@ -21,11 +21,12 @@ public class SettingsController {
     @FXML private ToggleButton btnDetail;
     @FXML private ToggleButton btnAbout;
 
+    @FXML
     private final ToggleGroup navGroup = new ToggleGroup();
     private final Map<String, Parent> cache = new HashMap<>();
 
     @FXML
-    private void initializeSettings() {
+    private void initialize() {
         // Agrupar los ToggleButton
         btnGeneral.setToggleGroup(navGroup);
         btnDetail.setToggleGroup(navGroup);
@@ -42,13 +43,13 @@ public class SettingsController {
 
         // Eventos de navegación
         btnGeneral.setOnAction(e -> navigateTo("General", "/org/mercurio/views/settings/GeneralSettingsView.fxml"));
-        btnDetail.setOnAction(e -> navigateTo("AccountDetail", "/org/mercurio/views//settings/AccountDetailView.fxml"));
-        btnAbout.setOnAction(e -> navigateTo("AboutUs", "/org/mercurio/views//settings/AboutUsView.fxml"));
+        btnDetail.setOnAction(e -> navigateTo("AccountDetail", "/org/mercurio/views/settings/AccountDetailView.fxml"));
+        btnAbout.setOnAction(e -> navigateTo("AboutUs", "/org/mercurio/views/settings/AboutUsView.fxml"));
 
         // Carga inicial
         btnGeneral.setSelected(true);
         btnGeneral.getStyleClass().add("active"); // <-- Marca Home como activo al iniciar
-        navigateTo("Home", "/org/mercurio/views/GeneralSettings.fxml");
+        navigateTo("General", "/org/mercurio/views/settings/GeneralSettingsView.fxml");
 
     }
 

@@ -341,3 +341,110 @@
 .content-root {
     -fx-background-color: -content-bg;
 }
+
+/* ====== TABBAR INTEGRADA CON PANEL ====== */
+/* Reusa .toolbar base y anulamos padding/espaciado para que no haya márgenes horizontales */
+.toolbarTabbar {
+    -fx-background-color: -header-bg;
+    -fx-border-color: -divider;
+    -fx-border-width: 0 0 1 0;   /* línea bajo la tabbar (encima del panel) */
+    -fx-padding: 0;              /* sin márgenes horizontales */
+    -fx-spacing: 6;              /* separación mínima entre botones */
+}
+
+/* Panel de contenido con borde y radio, fondo ya lo tienes en .content-root */
+.content-panel {
+    -fx-border-color: -divider;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 16;
+    /* Redondeo completo; el “corte” superior lo falsea el botón seleccionado */
+}
+
+/* Botones de pestaña (no usamos .nav-btn para no heredar alineación izquierda de sidebar) */
+.tab-btn {
+    -fx-background-color: -btn-bg;
+    -fx-text-fill: -text;
+    -fx-background-radius: 12 12 0 0;  /* tapa visualmente el borde superior del panel */
+    -fx-border-color: -divider;
+    -fx-border-width: 1 1 0 1;         /* sin borde inferior para “unirse” al panel */
+    -fx-border-radius: 12 12 0 0;
+    -fx-padding: 8 16 9 16;
+    -fx-cursor: hand;
+}
+
+/* Hover sutil */
+.tab-btn:hover {
+    -fx-background-color: -btn-bg-hover;
+}
+
+/* Seleccionado: mismo fondo que el panel para parecer una sola pieza */
+.tab-btn:selected {
+    -fx-background-color: -selected;
+    -fx-border-color: -selected-border;
+    -fx-border-width: 1 1 0 1;   /* mantiene unión limpia con el panel */
+}
+
+/* Foco discreto */
+.tab-btn:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Opcional: si quieres que la línea del separador sea algo más visible */
+.separator *.line {
+    -fx-background-color: -divider;
+}
+
+#contentContainer{
+    -fx-border-color: -selected-border;
+}
+
+/* ====== UTILIDADES DE ESPACIADO / PADDING ====== */
+.pad-16 { -fx-padding: 16; }
+.pad-24 { -fx-padding: 24; }
+.gap-8  { -fx-spacing: 8; }
+.gap-12 { -fx-spacing: 12; }
+.gap-16 { -fx-spacing: 16; }
+.gap-20 { -fx-spacing: 20; }
+
+/* ====== HYPERLINKS (en tarjetas y enlaces rápidos) ====== */
+.hyperlink {
+    -fx-text-fill: -primary;
+    -fx-underline: false;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.hyperlink:hover {
+    -fx-underline: true;
+    -fx-text-fill: derive(-primary, 10%);
+}
+.hyperlink:visited { -fx-text-fill: -primary; }
+
+/* ====== SCROLL TRANSPARENTE (viewport ya lo tienes, reforzamos) ====== */
+.home-scroll { -fx-background-color: transparent; }
+.home-scroll > .viewport { -fx-background-color: transparent; }
+
+/* ====== TÍTULOS EN TARJETA (por si quieres una variante más grande) ====== */
+.card-title-lg {
+    -fx-text-fill: -text;
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
+}
+
+/* ====== PIE / NOTAS EN TARJETA (mejora legibilidad en fondo oscuro) ====== */
+.kpi-foot {
+    -fx-text-fill: -muted;
+    -fx-font-size: 11px;
+}
+
+/* ====== BOTONES EN CABECERA / ACCIONES (consistencia en cards) ====== */
+.button-ghost:focused, .button-primary:focused, .button-danger:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ====== SEPARADORES (asegura el color) ====== */
+.separator *.line { -fx-background-color: -divider; }
+

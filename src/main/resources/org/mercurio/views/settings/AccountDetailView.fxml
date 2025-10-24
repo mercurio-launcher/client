@@ -1,17 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true">
-    <content>
-        <VBox spacing="20" styleClass="home-container">
-            <!-- ===== Apariencia e idioma ===== -->
-            <VBox spacing="16" styleClass="card">
-                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-                <Label styleClass="card-title-lg" text="Apariencia e idioma"/>
-                <!-- Pega aquí tus HBox/controles de tema, acento, idioma, fuente, contraste -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- ACCOUNT DETAIL - MERCURIO (alineado al estilo de "Acerca de Mercurio") -->
+<AnchorPane prefHeight="720.0" prefWidth="1000.0" styleClass="content-root"
+            xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- HEADER -->
+    <VBox spacing="16.0" AnchorPane.topAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                <Label text="Detalles de la cuenta" styleClass="section-h1"/>
+                <Label text="Gestiona tu perfil, sesión, credenciales e integraciones de forma segura."
+                       styleClass="label"/>
             </VBox>
-        </VBox>
-    </content>
-</ScrollPane>
+            <HBox spacing="8">
+                <Button text="Editar perfil" styleClass="button-ghost" minWidth="120.0"/>
+                <Button text="Cerrar sesión" styleClass="button-primary" minWidth="130.0"/>
+            </HBox>
+        </HBox>
+        <Separator styleClass="separator"/>
+    </VBox>
+
+    <!-- CONTENIDO SCROLLABLE -->
+    <ScrollPane fitToWidth="true" styleClass="home-scroll"
+                AnchorPane.topAnchor="120.0" AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <content>
+            <VBox spacing="20">
+                <padding>
+                    <Insets top="0" right="24" bottom="32" left="24"/>
+                </padding>
+
+                <!-- RESUMEN -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Resumen" styleClass="card-title"/>
+                    <HBox spacing="16">
+                        <children>
+                            <VBox spacing="8" styleClass="kpi-card">
+                                <Label text="Usuario" styleClass="kpi-label"/>
+                                <Label text="rumaking" styleClass="kpi-value"/>
+                                <Label text="ID local" styleClass="kpi-foot"/>
+                            </VBox>
+                            <VBox spacing="8" styleClass="kpi-card">
+                                <Label text="Estado sesión" styleClass="kpi-label"/>
+                                <Label text="Activa" styleClass="kpi-value"/>
+                                <Label text="Último login reciente" styleClass="kpi-foot"/>
+                            </VBox>
+                            <VBox spacing="8" styleClass="kpi-card">
+                                <Label text="Tipo de cuenta" styleClass="kpi-label"/>
+                                <Label text="Microsoft" styleClass="kpi-value"/>
+                                <Label text="OAuth seguro" styleClass="kpi-foot"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                        </children>
+                    </HBox>
+                </VBox>
+
+                <!-- IDENTIDAD Y PERFIL -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Identidad y perfil" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <Label text="Nombre para mostrar:" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Rumaking" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Correo electrónico:" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="rumaking@example.com" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="UUID de jugador:" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="a3b1-42f1-99x9" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Tipo de cuenta:" styleClass="kpi-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label text="Microsoft" styleClass="label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Ubicación predeterminada:" styleClass="kpi-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label text="C:/Users/Rumaking/AppData/Roaming/.minecraft"
+                               wrapText="true" styleClass="kpi-foot"
+                               GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Copiar UUID" styleClass="button-ghost" minWidth="130.0"/>
+                        <Button text="Cambiar directorio…" styleClass="button-ghost" minWidth="170.0"/>
+                        <Button text="Exportar perfil" styleClass="button-primary" minWidth="150.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- SEGURIDAD Y SESIÓN -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Seguridad y sesión" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <Label text="Proveedor OAuth:" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Microsoft Account" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Ámbitos concedidos:" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="perfil, email, xbox.live" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Token de acceso:" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="Válido (expira en ~50 min)" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Refresh token:" styleClass="kpi-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label text="Almacenado de forma segura" styleClass="label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Último inicio de sesión:" styleClass="kpi-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label text="23/10/2025 15:42" styleClass="label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Regenerar token" styleClass="button-ghost" minWidth="160.0"/>
+                        <Button text="Revocar sesión en este equipo" styleClass="button-ghost" minWidth="230.0"/>
+                        <Button text="Cerrar sesión en todos los dispositivos" styleClass="button-danger" minWidth="270.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- INTEGRACIONES Y VÍNCULOS -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Integraciones y cuentas vinculadas" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <Label text="Xbox Live / Game Pass:" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Vinculado" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Servicios de mods:" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="CurseForge (lectura), Modrinth (lectura)" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Sincronización en nube:" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="Desactivada" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Gestionar vínculos" styleClass="button-ghost" minWidth="170.0"/>
+                        <Button text="Configurar nube…" styleClass="button-ghost" minWidth="170.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- PREFERENCIAS DE PERFIL -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Preferencias de perfil" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <Label text="Memoria por defecto:" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="4 GB (Xmx4096m)" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Resolución por defecto:" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="Auto (ventana)" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Argumentos JVM:" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="-XX:+UseG1GC -XX:MaxGCPauseMillis=50"
+                               wrapText="true" styleClass="kpi-foot"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Editar preferencias" styleClass="button-ghost" minWidth="170.0"/>
+                        <Button text="Restablecer a valores por defecto" styleClass="button-ghost" minWidth="250.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- HISTORIAL DE SESIONES -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Historial de sesiones" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="6">
+                        <Label text="Fecha y hora" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Dispositivo" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="IP" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <Label text="Estado" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                        <Label text="24/10/2025 10:31" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="PC-Desktop" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="192.168.1.23" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <Label text="Ok" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                        <Label text="23/10/2025 15:42" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="Laptop" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="192.168.1.45" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                        <Label text="Ok" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Revocar otras sesiones" styleClass="button-ghost" minWidth="210.0"/>
+                        <Button text="Exportar historial" styleClass="button-ghost" minWidth="170.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- GESTIÓN DE DATOS -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Gestión de datos" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <Label text="Backups automáticos:" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Desactivados" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Exportar perfil:" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="ZIP con ajustes y rutas" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <HBox spacing="8">
+                        <Button text="Crear backup ahora" styleClass="button-ghost" minWidth="190.0"/>
+                        <Button text="Restaurar desde archivo…" styleClass="button-ghost" minWidth="210.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- ZONA PELIGRO -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Zona peligrosa" styleClass="card-title"/>
+                    <Label text="Estas acciones no se pueden deshacer. Asegúrate de tener copias de seguridad de tus perfiles e instancias."
+                           styleClass="kpi-foot" wrapText="true"/>
+                    <HBox spacing="8">
+                        <Button text="Eliminar cuenta de este dispositivo" styleClass="button-danger" minWidth="300.0"/>
+                        <Button text="Borrar caché de credenciales" styleClass="button-danger" minWidth="240.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- ENLACES Y AYUDA -->
+                <VBox spacing="12" styleClass="card">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Enlaces y ayuda" styleClass="card-title"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Hyperlink text="Abrir carpeta .minecraft"/>
+                        <Hyperlink text="Ver logs de autenticación"/>
+                        <Hyperlink text="Ayuda / FAQ de cuentas"/>
+                        <Hyperlink text="Política de privacidad"/>
+                    </HBox>
+                </VBox>
+
+                <!-- FOOT -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="© Mercurio Project — Cuenta y seguridad" styleClass="kpi-foot"/>
+                </HBox>
+
+            </VBox>
+        </content>
+    </ScrollPane>
+
+</AnchorPane>

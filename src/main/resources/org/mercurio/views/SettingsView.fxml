@@ -7,31 +7,47 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.mercurio.controllers.SettingsController">
 
-    <!-- TOPBAR: título + toolbar de navegación -->
+    <!-- TOPBAR: título + separador + selector -->
     <top>
-        <VBox spacing="12" BorderPane.alignment="CENTER">
-            <!-- Barra superior con título -->
-            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+        <VBox spacing="8" BorderPane.alignment="CENTER">
+            <!-- Barra superior con título (reusa tu .section-page-title) -->
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="header">
                 <Label text="Configuración" styleClass="section-page-title"/>
                 <Pane HBox.hgrow="ALWAYS"/>
-                <!-- (Opcional) espacio para acciones globales -->
             </HBox>
 
-            <!-- Toolbar de navegación (botones integrados) -->
-            <ToolBar styleClass="toolbar">
-                <ToggleButton fx:id="btnGeneral" prefHeight="34.0" prefWidth="216.0" selected="true" styleClass="nav-btn" text="Home" />
-                <ToggleButton fx:id="btnDetail" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Instances" />
-                <ToggleButton fx:id="btnAbout" prefHeight="34.0" prefWidth="216.0" styleClass="nav-btn" text="Analytics" />
+            <!-- Selector integrado (reusa .toolbar y añade .tabbar) -->
+            <ToolBar styleClass="toolbarTabbar">
+                <fx:define>
+                    <ToggleGroup fx:id="navGroup"/>
+                </fx:define>
+
+                <ToggleButton fx:id="btnGeneral"
+                              text="General Settings"
+                              toggleGroup="$navGroup"
+                              selected="true"
+                              styleClass="tab-btn"/>
+
+                <ToggleButton fx:id="btnDetail"
+                              text="Account Details"
+                              toggleGroup="$navGroup"
+                              styleClass="tab-btn"/>
+
+                <ToggleButton fx:id="btnAbout"
+                              text="About us"
+                              toggleGroup="$navGroup"
+                              styleClass="tab-btn"/>
             </ToolBar>
         </VBox>
     </top>
-
-    <!-- CONTENEDOR CENTRAL (carga dinámica) -->
+    <!-- Separador fino (reusa tu .separator *.line) -->
+    <Separator/>
+    <!-- CONTENEDOR CENTRAL (panel inferior que “se une” al tab seleccionado) -->
     <center>
-        <StackPane fx:id="contentContainer" styleClass="content-root" />
+        <StackPane fx:id="contentContainer" styleClass="content-root content-panel"/>
     </center>
 
-    <!-- Márgenes internos opcionales -->
+    <!-- Márgenes del root (si quieres 0 a los lados, pon right/left a 0) -->
     <padding>
         <Insets top="16" right="16" bottom="16" left="16"/>
     </padding>

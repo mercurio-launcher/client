@@ -1,24 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true">
-    <content>
-        <VBox spacing="20" styleClass="home-container">
-            <!-- ===== Actualizaciones ===== -->
-            <VBox spacing="16" styleClass="card">
-                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-                <Label styleClass="card-title-lg" text="Actualizaciones"/>
-                <!-- Pega aquí tus controles de búsqueda, canal, prereleases, acciones -->
-            </VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-            <!-- ===== Acerca de ===== (si prefieres, colócalo en General) -->
-            <VBox spacing="12" styleClass="card">
-                <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
-                <Label styleClass="card-title-lg" text="Acerca de Mercurio"/>
-                <!-- Pega aquí tu HBox de versión, canal, licencias, copyright -->
+<AnchorPane prefHeight="720.0" prefWidth="1000.0" styleClass="content-root"
+            xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- HEADER -->
+    <VBox spacing="16.0" AnchorPane.topAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                <Label text="Acerca de Mercurio" styleClass="section-h1"/>
+                <Label text="Launcher moderno de Minecraft: rápido, modular y pensado para perfiles, mods y multientorno." styleClass="label"/>
             </VBox>
-        </VBox>
-    </content>
-</ScrollPane>
+            <HBox spacing="8">
+                <Button text="Sitio web" styleClass="button-ghost" minWidth="100.0"/>
+                <Button text="Contactar" styleClass="button-primary" minWidth="110.0"/>
+            </HBox>
+        </HBox>
+        <Separator styleClass="separator"/>
+    </VBox>
+
+    <!-- CONTENIDO SCROLLABLE -->
+    <ScrollPane fitToWidth="true" styleClass="home-scroll"
+                AnchorPane.topAnchor="120.0" AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <content>
+            <VBox spacing="20">
+                <padding>
+                    <Insets top="0" right="24" bottom="32" left="24"/>
+                </padding>
+
+                <!-- MISIÓN / VISIÓN -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Misión y Visión" styleClass="card-title"/>
+                    <Label styleClass="label"
+                           text="Nuestra misión es ofrecer una experiencia de lanzamiento unificada y segura para cualquier versión de Minecraft, simplificando la gestión de instancias, perfiles y mods sin sacrificar rendimiento. La visión de Mercurio es convertirse en una plataforma extensible con un ecosistema de plugins y una experiencia visual consistente en Windows, Linux y macOS."/>
+                </VBox>
+
+                <!-- VALORES DEL PROYECTO -->
+                <HBox spacing="16">
+                    <children>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Rendimiento" styleClass="kpi-label"/>
+                            <Label text="Bajo consumo" styleClass="kpi-value"/>
+                            <Label text="UI reactiva y fluida" styleClass="kpi-foot"/>
+                        </VBox>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Modularidad" styleClass="kpi-label"/>
+                            <Label text="Plugins" styleClass="kpi-value"/>
+                            <Label text="Perfiles y packs" styleClass="kpi-foot"/>
+                        </VBox>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Seguridad" styleClass="kpi-label"/>
+                            <Label text="Aislada" styleClass="kpi-value"/>
+                            <Label text="Checks de integridad" styleClass="kpi-foot"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <!-- CARACTERÍSTICAS CLAVE -->
+                <VBox spacing="12" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Características clave" styleClass="card-title"/>
+                    <VBox spacing="6">
+                        <Label styleClass="label" text="• Gestor de instancias: múltiples versiones (Vanilla, Forge, Fabric, OptiFine) con rutas aisladas."/>
+                        <Label styleClass="label" text="• Perfiles avanzados: JVM args, asignación de memoria, resolución, auto-update de mods."/>
+                        <Label styleClass="label" text="• Catálogo de mods: importación desde archivos, enlaces y repos populares."/>
+                        <Label styleClass="label" text="• Logs y diagnósticos: consola integrada, exportación y filtros por nivel."/>
+                        <Label styleClass="label" text="• Copias y migraciones: clonado de instancias y backup/restore sencillo."/>
+                        <Label styleClass="label" text="• UX consistente: tema oscuro violeta, accesibilidad y estados hover/activos claros."/>
+                    </VBox>
+                </VBox>
+
+                <!-- TECNOLOGÍAS -->
+                <VBox spacing="12" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Tecnologías" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="8">
+                        <columnConstraints/>
+                        <rowConstraints/>
+                        <padding>
+                            <Insets top="4" right="0" bottom="0" left="0"/>
+                        </padding>
+
+                        <Label text="Lenguaje / Runtime" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="Java 17+ (OpenJDK), JavaFX 21+" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="UI / Tema" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="JavaFX + CSS personalizado (Dark Purple Theme)" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Build / Tooling" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="Gradle, Modular JAR, JLink/JPackage (opcional)" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Integraciones" styleClass="kpi-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label text="Minecraft Launch API, perfiles JSON, repos de mods" styleClass="label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Sistema" styleClass="kpi-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label text="Windows, Linux, macOS" styleClass="label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- REQUISITOS DEL SISTEMA -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Requisitos del sistema" styleClass="card-title"/>
+                    <GridPane hgap="12" vgap="6">
+                        <Label text="CPU" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label text="2+ núcleos (recomendado 4 hilos)" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="RAM" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label text="4 GB mínimo (8–16 GB recomendado)" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Almacenamiento" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label text="1–2 GB launcher + instancias/mods adicionales" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Java" styleClass="kpi-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label text="OpenJDK 17+ (bundled o del sistema)" styleClass="label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="GPU" styleClass="kpi-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label text="OpenGL compatible (drivers actualizados)" styleClass="label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- LICENCIAS Y TERCEROS -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Licencias y dependencias" styleClass="card-title"/>
+                    <VBox spacing="6">
+                        <Label styleClass="label" text="• Código de Mercurio: Licencia MIT (previsto)."/>
+                        <Label styleClass="label" text="• JavaFX: GPL + Classpath Exception."/>
+                        <Label styleClass="label" text="• Dependencias adicionales: ver NOTICE en el repositorio."/>
+                        <Label styleClass="label" text="• Marcas comerciales pertenecen a sus respectivos dueños (Mojang/Microsoft, etc.)."/>
+                    </VBox>
+                </VBox>
+
+                <!-- HOJA DE RUTA -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Hoja de ruta" styleClass="card-title"/>
+                    <VBox spacing="6">
+                        <Label styleClass="label" text="• 0.1.x — MVP del launcher, gestión básica de instancias y perfiles."/>
+                        <Label styleClass="label" text="• 0.2.x — Catálogo de mods, auto-update y validaciones de integridad."/>
+                        <Label styleClass="label" text="• 0.3.x — Sistema de plugins, API pública y plantillas de perfil."/>
+                        <Label styleClass="label" text="• 1.0 — Estabilidad, empaquetado multiplataforma, soporte integral."/>
+                    </VBox>
+                </VBox>
+
+                <!-- EQUIPO -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Equipo" styleClass="card-title"/>
+                    <VBox spacing="4">
+                        <Label styleClass="card-subtitle" text="Rol principal"/>
+                        <Label styleClass="label" text="• Desarrollo y Arquitectura: diseño de UI/UX en JavaFX, sistema de instancias y perfiles, integración con APIs de lanzamiento."/>
+                        <Label styleClass="card-subtitle" text="Colaboraciones futuras"/>
+                        <Label styleClass="label" text="• QA/Testing, empaquetado multiplataforma, localización y documentación."/>
+                    </VBox>
+                </VBox>
+
+                <!-- ESTADO / VERSIÓN -->
+                <HBox spacing="16">
+                    <children>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Versión" styleClass="kpi-label"/>
+                            <Label text="0.1.0 (MVP)" styleClass="kpi-value"/>
+                            <Label text="Canal: Pre-release" styleClass="kpi-foot"/>
+                        </VBox>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Licencia" styleClass="kpi-label"/>
+                            <Label text="MIT (previsto)" styleClass="kpi-value"/>
+                            <Label text="Ver archivo LICENSE" styleClass="kpi-foot"/>
+                        </VBox>
+                        <VBox spacing="8" styleClass="kpi-card">
+                            <Label text="Estado" styleClass="kpi-label"/>
+                            <Label text="En desarrollo" styleClass="kpi-value"/>
+                            <Label text="Roadmap activo" styleClass="kpi-foot"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <!-- PRIVACIDAD / TELEMETRÍA -->
+                <VBox spacing="10" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Privacidad y telemetría" styleClass="card-title"/>
+                    <Label styleClass="label"
+                           text="Mercurio no recolecta datos personales sin consentimiento explícito. Los logs locales se almacenan en tu máquina y puedes desactivar el envío de reportes. Si en el futuro se habilita telemetría opcional, estará desactivada por defecto y documentada."/>
+                </VBox>
+
+                <!-- ENLACES Y CONTACTO -->
+                <VBox spacing="12" styleClass="card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <Label text="Enlaces y contacto" styleClass="card-title"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Hyperlink text="Repositorio / Código" />
+                        <Hyperlink text="Guía de usuario" />
+                        <Hyperlink text="Reportar incidencia" />
+                        <Hyperlink text="Política de privacidad" />
+                    </HBox>
+                    <HBox spacing="8">
+                        <Button text="Abrir documentación" styleClass="button-ghost" minWidth="160.0"/>
+                        <Button text="Enviar feedback" styleClass="button-primary" minWidth="140.0"/>
+                    </HBox>
+                </VBox>
+
+                <!-- FOOT -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="© Mercurio Project — Todos los derechos reservados" styleClass="kpi-foot"/>
+                </HBox>
+
+            </VBox>
+        </content>
+    </ScrollPane>
+
+</AnchorPane>

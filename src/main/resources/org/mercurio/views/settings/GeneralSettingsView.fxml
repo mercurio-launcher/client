@@ -33,50 +33,6 @@
             <VBox spacing="20">
                 <padding><Insets top="0" right="24" bottom="32" left="24"/></padding>
 
-                <!-- ===== Cuenta y perfil ===== -->
-                <VBox spacing="12" styleClass="card">
-                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="card-title" text="Cuenta y perfil"/>
-                        <Label styleClass="kpi-foot" text="Gestiona tu identidad local y la carpeta de datos."/>
-                    </HBox>
-
-                    <!-- Action bar a la IZQUIERDA (explícita, no en menú) -->
-                    <HBox spacing="8" alignment="CENTER_LEFT">
-                        <Button text="Cambiar avatar" styleClass="button-ghost"/>
-                        <Button text="Cerrar sesión" styleClass="button-danger"/>
-                    </HBox>
-
-                    <GridPane hgap="12" vgap="10">
-                        <!-- Avatar + usuario -->
-                        <Label text="Usuario actual" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <HBox spacing="12" GridPane.rowIndex="0" GridPane.columnIndex="1">
-                            <ImageView fx:id="imgAvatar" fitHeight="48" fitWidth="48" pickOnBounds="true" preserveRatio="true"/>
-                            <VBox spacing="3">
-                                <Label text="rumaking" styleClass="label"/>
-                                <Label text="ID local • Sólo visible en este dispositivo" styleClass="kpi-foot"/>
-                            </VBox>
-                        </HBox>
-
-                        <!-- Carpeta de datos -->
-                        <Label text="Carpeta de datos" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                        <HBox spacing="8" GridPane.rowIndex="1" GridPane.columnIndex="1">
-                            <TextField fx:id="txtDataDir" promptText="C:/Users/rumaking/AppData/Roaming/Mercurio" HBox.hgrow="ALWAYS"/>
-                            <SplitMenuButton styleClass="split-menu-button" text="Explorar">
-                                <items>
-                                    <MenuItem text="Abrir carpeta"/>
-                                    <MenuItem text="Copiar ruta"/>
-                                </items>
-                            </SplitMenuButton>
-                        </HBox>
-
-                        <!-- Nota contextual -->
-                        <Label text="La carpeta de datos contiene perfiles, logs y ajustes. Cambiarla no mueve contenido automáticamente."
-                               wrapText="true" styleClass="kpi-foot" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                    </GridPane>
-                </VBox>
-
                 <!-- ===== Apariencia e idioma ===== -->
                 <VBox spacing="12" styleClass="card">
                     <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
@@ -86,13 +42,14 @@
                         <Label styleClass="kpi-foot" text="Tema, acento y accesibilidad de la interfaz."/>
                     </HBox>
 
-                    <!-- Action bar izquierda: acciones rápidas de preview -->
+                    <!-- Action bar izquierda: acciones rápidas -->
                     <HBox spacing="8" alignment="CENTER_LEFT">
-                        <Button text="Previsualizar cambios" styleClass="button-ghost"/>
-                        <Button text="Reiniciar colores" styleClass="button-ghost"/>
+                        <Button fx:id="btnPrevisualizarApariencia" text="Previsualizar cambios" styleClass="button-ghost"/>
+                        <Button fx:id="btnReiniciarColores" text="Reiniciar colores" styleClass="button-ghost"/>
                     </HBox>
 
                     <GridPane hgap="12" vgap="10">
+                        <!-- Tema -->
                         <Label text="Tema" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                         <ChoiceBox fx:id="cbTema" GridPane.rowIndex="0" GridPane.columnIndex="1">
                             <items>
@@ -104,6 +61,7 @@
                             </items>
                         </ChoiceBox>
 
+                        <!-- Acento -->
                         <Label text="Color de acento" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
                         <ChoiceBox fx:id="cbAcento" GridPane.rowIndex="0" GridPane.columnIndex="3">
                             <items>
@@ -116,6 +74,7 @@
                             </items>
                         </ChoiceBox>
 
+                        <!-- Idioma -->
                         <Label text="Idioma" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
                         <ChoiceBox fx:id="cbIdioma" GridPane.rowIndex="1" GridPane.columnIndex="1">
                             <items>
@@ -126,21 +85,20 @@
                             </items>
                         </ChoiceBox>
 
-                        <Label text="Tamaño de fuente" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                        <HBox spacing="8" GridPane.rowIndex="1" GridPane.columnIndex="3">
-                            <Slider fx:id="sliderFuente" majorTickUnit="2" max="20" min="12" snapToTicks="true" value="14"/>
-                            <Label styleClass="muted" text="pt"/>
+                        <!-- Acciones aplicar/restaurar (alineadas a la derecha del grid) -->
+                        <HBox spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="2" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                            <Button fx:id="btnAplicarApariencia" styleClass="button-primary" text="Aplicar apariencia"/>
+                            <Button fx:id="btnRestaurarApariencia" styleClass="button-ghost" text="Restaurar por defecto"/>
                         </HBox>
 
-                        <Label text="Accesibilidad" styleClass="kpi-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                        <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1">
-                            <ToggleButton fx:id="tglContraste" text="Alto contraste"/>
-                        </HBox>
-
-                        <Label text="El alto contraste mejora la legibilidad. El idioma afecta a textos y formatos."
-                               wrapText="true" styleClass="kpi-foot" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <!-- Nota -->
+                        <Label fx:id="lblNotaApariencia"
+                               text="El alto contraste mejora la legibilidad. El idioma afecta a textos y formatos."
+                               wrapText="true" styleClass="kpi-foot"
+                               GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
                     </GridPane>
                 </VBox>
+
 
                 <!-- ===== Recursos ===== -->
                 <VBox spacing="12" styleClass="card">
@@ -148,33 +106,44 @@
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="card-title" text="Recursos"/>
-                        <Label styleClass="kpi-foot" text="Rutas y uso de hardware al lanzar instancias."/>
-                    </HBox>
-
-                    <!-- Action bar izquierda -->
-                    <HBox spacing="8" alignment="CENTER_LEFT">
-                        <Button fx:id="btnCambiarRuta" styleClass="button-ghost" text="Cambiar ruta de instalación"/>
-                        <Button styleClass="button-ghost" text="Detectar GPU"/>
+                        <Label styleClass="kpi-foot" text="Uso de hardware al lanzar instancias."/>
                     </HBox>
 
                     <GridPane hgap="12" vgap="10">
+                        <!-- Ruta -->
                         <Label text="Ruta de instalación" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtRutaInstalacion" promptText="C:/Users/Rumaking/AppData/Roaming/.minecraft"
+                        <TextField fx:id="txtRutaInstalacion"
+                                   promptText="C:/Users/Rumaking/AppData/Roaming/.minecraft"
                                    GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
 
-                        <Label text="Memoria (RAM)" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                        <HBox spacing="8" GridPane.rowIndex="1" GridPane.columnIndex="1">
-                            <Slider fx:id="sliderRam" majorTickUnit="1" max="16" min="1" snapToTicks="true" value="4"/>
+                        <!-- Límites de RAM (mín / máx) -->
+                        <Label text="RAM mínima (GB)" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                            <TextField fx:id="txtMinRam" promptText="2" prefWidth="80"/>
                             <Label styleClass="muted" text="GB"/>
                         </HBox>
 
-                        <Label text="Usar GPU dedicada" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                        <CheckBox fx:id="chkUsarGPU" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                        <Label text="RAM máxima (GB)" styleClass="kpi-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="3">
+                            <TextField fx:id="txtMaxRam" promptText="8" prefWidth="80"/>
+                            <Label styleClass="muted" text="GB"/>
+                        </HBox>
 
-                        <Label text="La memoria afecta al rendimiento y estabilidad del juego. GPU dedicada recomendado para shaders."
-                               wrapText="true" styleClass="kpi-foot" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+
+                        <!-- Acciones de RAM -->
+                        <HBox spacing="8" alignment="CENTER_LEFT" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                            <Button fx:id="btnAplicarLimitesRam" styleClass="button-primary" text="Aplicar límites de RAM"/>
+                            <Button fx:id="btnRestaurarRamPorDefecto" styleClass="button-ghost" text="Restaurar valores por defecto"/>
+                        </HBox>
+
+                        <!-- Ayuda/nota -->
+                        <Label fx:id="lblNotaRam"
+                               text="La memoria asignada debe estar entre la RAM mínima y máxima por defecto."
+                               wrapText="true" styleClass="kpi-foot"
+                               GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
                     </GridPane>
                 </VBox>
+
 
                 <!-- ===== Actualizaciones ===== -->
                 <VBox spacing="12" styleClass="card">
@@ -213,31 +182,6 @@
                         <Label text="El canal 'Estable' es el recomendado. 'Beta' y 'Nightly' pueden incluir cambios inestables."
                                wrapText="true" styleClass="kpi-foot" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
                     </GridPane>
-                </VBox>
-
-                <!-- ===== Acerca de ===== -->
-                <VBox spacing="12" styleClass="card">
-                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="card-title" text="Acerca de Mercurio"/>
-                        <Label styleClass="kpi-foot" text="Información de versión y licencias."/>
-                    </HBox>
-
-                    <GridPane hgap="12" vgap="8">
-                        <Label text="Versión" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <Label fx:id="lblVersion" text="1.0.0" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-
-                        <Label text="Canal" styleClass="kpi-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                        <Label fx:id="lblCanal" text="Estable" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                    </GridPane>
-
-                    <!-- Action bar izquierda -->
-                    <HBox spacing="8" alignment="CENTER_LEFT">
-                        <Button fx:id="btnLicencias" styleClass="button-ghost" text="Ver licencias"/>
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Label styleClass="kpi-foot" text="© 2025 Mercurio Launcher — Todos los derechos reservados."/>
-                    </HBox>
                 </VBox>
 
                 <!-- ===== Zona peligrosa ===== -->

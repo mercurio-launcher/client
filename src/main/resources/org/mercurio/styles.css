@@ -78,7 +78,9 @@
 }
 .card-title {
     -fx-text-fill: -text;
-    -fx-font-weight: bold;
+
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
 }
 .card-subtitle {
     -fx-text-fill: -muted;
@@ -381,7 +383,7 @@
 
 /* Seleccionado: mismo fondo que el panel para parecer una sola pieza */
 .tab-btn:selected {
-    -fx-background-color: -selected;
+    -fx-background-color: -content-bg;
     -fx-border-color: -selected-border;
     -fx-border-width: 1 1 0 1;   /* mantiene unión limpia con el panel */
 }
@@ -398,7 +400,7 @@
 }
 
 #contentContainer{
-    -fx-border-color: -selected-border;
+    -fx-border-color: -btn-bg;
 }
 
 /* ====== UTILIDADES DE ESPACIADO / PADDING ====== */

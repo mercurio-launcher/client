@@ -11,9 +11,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.mercurio.managers.AuthManager;
 import org.mercurio.managers.HttpManager;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -67,19 +69,17 @@ public class MainController {
         btnHome.setOnAction(e -> navigateTo("Home", "/org/mercurio/views/HomeView.fxml"));
         btnSettings.setOnAction(e -> navigateTo("Settings", "/org/mercurio/views/SettingsView.fxml"));
         btnInstances.setOnAction(e -> navigateTo("Instances", "/org/mercurio/views/InstancesView.fxml"));
-        btnProfile.setOnAction(e -> navigateTo("Profile","/org/mercurio/views/ProfileView.fxml"));
+        btnProfile.setOnAction(e -> {
+            if (false) {
+                navigateTo("Profile", "/org/mercurio/views/ProfileView.fxml");
+            } else {
+                navigateTo("Login", "/org/mercurio/views/LoginView.fxml");
+            }
+        });
         btnAnalytics.setOnAction(e -> navigateTo("Analalytics","/org/mercurio/views/AnalyticsView.fxml"));
         btnTasks.setOnAction(e -> navigateTo("Tasks","/org/mercurio/views/TasksView.fxml"));
         btnHelp.setOnAction(e -> navigateTo("Help","/org/mercurio/views/HelpView.fxml"));
 
-
-        btnProfile.setOnAction(e -> {
-            try {
-                HttpManager.AuthResult res = HttpManager.getMicrosoftAuthorizationToken();
-            } catch (IOException | InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
         // Carga inicial
         btnHome.setSelected(true);
         btnHome.getStyleClass().add("active"); // <-- Marca Home como activo al iniciar

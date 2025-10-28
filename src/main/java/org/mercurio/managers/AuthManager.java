@@ -12,6 +12,7 @@ public class AuthManager {
     public void login() throws IOException, InterruptedException, URISyntaxException {
         HttpManager.AuthResult authRes = HttpManager.getMicrosoftAuthorizationToken();
         openDesktop();
+
     }
 
     public void refreshSession() {

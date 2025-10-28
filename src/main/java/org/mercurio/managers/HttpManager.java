@@ -49,7 +49,6 @@ public class HttpManager {
             String deviceCode = responseJson.get("device_code").getAsString();
             String userCode = responseJson.get("user_code").getAsString();
 
-            System.out.println("Code extracted: " + response.body());
             System.out.println("Code extracted: " + userCode);
             System.out.println("Device Code extracted: " + deviceCode);
 

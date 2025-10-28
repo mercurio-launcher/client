@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox
+        fx:id="root"
+        styleClass="card"
+        alignment="CENTER"
+        spacing="16.0"
+        prefWidth="320.0"
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="org.mercurio.controllers.AuthPopUpController"
+>
+    <padding>
+        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0" />
+    </padding>
+
+    <VBox alignment="CENTER" spacing="4.0">
+        <Label text="Tu Código de Acceso" styleClass="card-title-lg" />
+        <Label
+                text="Copia el código y haz clic en el botón para continuar."
+                styleClass="muted"
+                wrapText="true"
+                textAlignment="CENTER"
+        />
+    </VBox>
+
+    <TextField
+            fx:id="codeTextField"
+            text="NL68ZP46"
+            editable="false"
+            style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-alignment: center; -fx-font-family: 'Consolas', 'Courier New', monospace;"
+    />
+
+    <Button
+            fx:id="redirectButton"
+            text="Ir al Sitio Web"
+            onAction="#handleRedirect"
+            styleClass="button-primary"
+            maxWidth="Infinity"
+    />
+
+</VBox>

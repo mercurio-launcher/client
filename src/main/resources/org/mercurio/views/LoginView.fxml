@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            prefHeight="600" prefWidth="800"
+            fx:controller="org.mercurio.controllers.LoginController"> <children>
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+               AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+               styleClass="home-scroll"> <VBox alignment="CENTER" spacing="24" maxWidth="400">
+        <padding>
+            <Insets top="32" right="32" bottom="32" left="32"/>
+        </padding>
+        <children>
+
+            <StackPane prefWidth="100" prefHeight="100"
+                       style="-fx-background-color: -btn-bg; -fx-background-radius: 100;">
+                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/mercurio-logo.png" />
+                    </image>
+                </ImageView>
+            </StackPane>
+
+            <Label text="Bienvenido" styleClass="section-title"/>
+            <Label text="Inicia sesión con tu cuenta de Microsoft para continuar."
+                   wrapText="true" textAlignment="CENTER" styleClass="muted"/>
+
+            <Button fx:id="loginButton"
+                    text="Iniciar sesión con Microsoft"
+                    styleClass="button-primary"
+                    maxWidth="Infinity"/>
+
+        </children>
+    </VBox>
+    </StackPane>
+</children>
+</AnchorPane>
